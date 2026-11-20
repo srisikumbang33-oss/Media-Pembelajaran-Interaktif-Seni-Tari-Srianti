@@ -1,0 +1,2640 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AYO BERKREASI TARI! - Jelajahi Keindahan Tari Piring Minangkabau</title>
+
+  <!-- Google Fonts: Fredoka (ramah anak, judul) & Plus Jakarta Sans (jelas, mudah dibaca) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            marun: {
+              DEFAULT: '#7B1E26',
+              dark: '#581218',
+              light: '#9E2A34',
+              soft: '#F9EBEB'
+            },
+            emas: {
+              DEFAULT: '#D4AF37',
+              bright: '#F3C623',
+              dark: '#A6831A',
+              soft: '#FDF6DF'
+            },
+            krem: {
+              DEFAULT: '#FFF9EE',
+              warm: '#F7EBD5',
+              card: '#FFFDF8'
+            }
+          },
+          fontFamily: {
+            display: ['Fredoka', 'sans-serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif']
+          },
+          boxShadow: {
+            'minang': '0 10px 25px -5px rgba(123, 30, 38, 0.14), 0 4px 10px -2px rgba(212, 175, 55, 0.15)',
+            'gold': '0 6px 0 #A6831A',
+            'maroon-btn': '0 6px 0 #4D0F14'
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    /* Gaya Dasar & Motif Songket Minangkabau */
+    body {
+      background-color: #FFF9EE;
+      color: #2D181A;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, .font-judul {
+      font-family: 'Fredoka', sans-serif;
+    }
+
+    /* Pola Ornamen Songket Minangkabau sebagai Border */
+    .songket-border {
+      height: 16px;
+      width: 100%;
+      background-color: #7B1E26;
+      background-image: url("data:image/svg+xml,%3Csvg width='48' height='16' viewBox='0 0 48 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M24 1L31 8L24 15L17 8L24 1Z' fill='%23F3C623'/%3E%3Cpath d='M24 4.5L27.5 8L24 11.5L20.5 8L24 4.5Z' fill='%237B1E26'/%3E%3Cpath d='M0 8L6 2L12 8L6 14L0 8Z' fill='%23D4AF37' fill-opacity='0.75'/%3E%3Cpath d='M36 8L42 2L48 8L42 14L36 8Z' fill='%23D4AF37' fill-opacity='0.75'/%3E%3Ccircle cx='14.5' cy='8' r='1.5' fill='%23FFF9EE'/%3E%3Ccircle cx='33.5' cy='8' r='1.5' fill='%23FFF9EE'/%3E%3C/svg%3E");
+      background-repeat: repeat-x;
+    }
+
+    /* Animasi lembut ramah anak */
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-7px); }
+    }
+    .animate-float {
+      animation: floatSlow 3.4s ease-in-out infinite;
+    }
+
+    @keyframes swayPlate {
+      0%, 100% { transform: rotate(-4deg) translateY(0); }
+      50% { transform: rotate(5deg) translateY(-4px); }
+    }
+    .animate-sway {
+      transform-origin: center;
+      animation: swayPlate 2.6s ease-in-out infinite;
+    }
+
+    @keyframes pulseBeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.12); }
+    }
+    .beat-active {
+      animation: pulseBeat 0.35s ease-out;
+    }
+
+    /* Efek tombol tekan ramah anak */
+    .btn-3d-gold {
+      transition: all 0.15s ease;
+      box-shadow: 0 5px 0 #A6831A;
+    }
+    .btn-3d-gold:active {
+      transform: translateY(4px);
+      box-shadow: 0 1px 0 #A6831A;
+    }
+
+    .btn-3d-maroon {
+      transition: all 0.15s ease;
+      box-shadow: 0 5px 0 #4D0F14;
+    }
+    .btn-3d-maroon:active {
+      transform: translateY(4px);
+      box-shadow: 0 1px 0 #4D0F14;
+    }
+
+    /* Custom scrollbar halus */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F7EBD5;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #9E2A34;
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-emas-bright selection:text-marun-dark">
+
+  <!-- ===================================================================== -->
+  <!-- HEADER & NAVIGASI UTAMA                                               -->
+  <!-- ===================================================================== -->
+  <header class="sticky top-0 z-50 bg-marun text-white shadow-lg">
+    <div class="songket-border"></div>
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 py-2.5">
+      <div class="flex flex-wrap items-center justify-between gap-2">
+        <!-- Logo & Judul -->
+        <button onclick="navigateTo('beranda')" class="flex items-center gap-3 text-left group focus:outline-none">
+          <!-- Ikon Rumah Gadang Mini SVG -->
+          <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-emas-bright text-marun-dark flex items-center justify-center shadow-md group-hover:scale-105 transition-transform shrink-0 border-2 border-white">
+            <svg viewBox="0 0 64 64" class="w-8 h-8" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 26C14 26 18 14 20 8C22 16 26 22 32 22C38 22 42 16 44 8C46 14 50 26 58 26L53 34H11L6 26Z" fill="#7B1E26"/>
+              <path d="M14 34H50V52H14V34Z" fill="#FFF9EE" stroke="#7B1E26" stroke-width="2.5"/>
+              <rect x="27" y="40" width="10" height="12" rx="2" fill="#D4AF37"/>
+              <circle cx="21" cy="42" r="2.5" fill="#7B1E26"/>
+              <circle cx="43" cy="42" r="2.5" fill="#7B1E26"/>
+            </svg>
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="font-judul text-lg sm:text-xl md:text-2xl font-bold tracking-wide text-emas-bright leading-none">
+                AYO BERKREASI TARI!
+              </span>
+            </div>
+            <p class="text-xs sm:text-sm text-krem/90 font-medium mt-0.5">
+              Seni Tari Kelas V SD • Tari Piring Minangkabau
+            </p>
+          </div>
+        </button>
+
+        <!-- Tombol Menu Mobile -->
+        <button id="mobileMenuBtn" onclick="toggleMobileMenu()" class="lg:hidden px-3.5 py-2 rounded-xl bg-marun-light hover:bg-emas-bright hover:text-marun-dark border border-emas/50 font-bold text-sm flex items-center gap-2 transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <span>Menu</span>
+        </button>
+
+        <!-- Navigasi Desktop -->
+        <nav id="desktopNav" class="hidden lg:flex items-center gap-1.5 flex-wrap">
+          <button data-nav="beranda" onclick="navigateTo('beranda')" class="nav-btn px-3.5 py-2 rounded-xl font-bold text-sm transition flex items-center gap-1.5">
+            <span>🏠</span> Beranda
+          </button>
+          <button data-nav="petunjuk" onclick="navigateTo('petunjuk')" class="nav-btn px-3.5 py-2 rounded-xl font-bold text-sm transition flex items-center gap-1.5">
+            <span>🧭</span> Petunjuk
+          </button>
+          <button data-nav="cptp" onclick="navigateTo('cptp')" class="nav-btn px-3.5 py-2 rounded-xl font-bold text-sm transition flex items-center gap-1.5">
+            <span>🎯</span> CP & TP
+          </button>
+          <button data-nav="materi" onclick="navigateTo('materi')" class="nav-btn px-3.5 py-2 rounded-xl font-bold text-sm transition flex items-center gap-1.5">
+            <span>📚</span> Materi
+          </button>
+          <button data-nav="video" onclick="navigateTo('video')" class="nav-btn px-3.5 py-2 rounded-xl font-bold text-sm transition flex items-center gap-1.5">
+            <span>🎬</span> Video
+          </button>
+          <button data-nav="musik" onclick="navigateTo('musik')" class="nav-btn px-3.5 py-2 rounded-xl font-bold text-sm transition flex items-center gap-1.5">
+            <span>🎶</span> Musik
+          </button>
+          <button data-nav="kuis" onclick="navigateTo('kuis')" class="nav-btn px-3.5 py-2 rounded-xl font-bold text-sm transition flex items-center gap-1.5">
+            <span>🏆</span> Kuis
+          </button>
+          <button data-nav="refleksi" onclick="navigateTo('refleksi')" class="nav-btn px-3.5 py-2 rounded-xl font-bold text-sm transition flex items-center gap-1.5">
+            <span>💭</span> Refleksi
+          </button>
+        </nav>
+      </div>
+
+      <!-- Navigasi Mobile Dropdown -->
+      <nav id="mobileNav" class="hidden lg:hidden mt-3 pt-3 border-t border-white/20 grid grid-cols-2 sm:grid-cols-4 gap-2 pb-1">
+        <button data-nav="beranda" onclick="navigateTo('beranda')" class="nav-btn-mob px-3 py-2.5 rounded-xl font-bold text-sm text-left flex items-center gap-2">
+          <span>🏠</span> Beranda
+        </button>
+        <button data-nav="petunjuk" onclick="navigateTo('petunjuk')" class="nav-btn-mob px-3 py-2.5 rounded-xl font-bold text-sm text-left flex items-center gap-2">
+          <span>🧭</span> Petunjuk
+        </button>
+        <button data-nav="cptp" onclick="navigateTo('cptp')" class="nav-btn-mob px-3 py-2.5 rounded-xl font-bold text-sm text-left flex items-center gap-2">
+          <span>🎯</span> CP & TP
+        </button>
+        <button data-nav="materi" onclick="navigateTo('materi')" class="nav-btn-mob px-3 py-2.5 rounded-xl font-bold text-sm text-left flex items-center gap-2">
+          <span>📚</span> Materi (6 Bab)
+        </button>
+        <button data-nav="video" onclick="navigateTo('video')" class="nav-btn-mob px-3 py-2.5 rounded-xl font-bold text-sm text-left flex items-center gap-2">
+          <span>🎬</span> Video Tari
+        </button>
+        <button data-nav="musik" onclick="navigateTo('musik')" class="nav-btn-mob px-3 py-2.5 rounded-xl font-bold text-sm text-left flex items-center gap-2">
+          <span>🎶</span> Musik Iringan
+        </button>
+        <button data-nav="kuis" onclick="navigateTo('kuis')" class="nav-btn-mob px-3 py-2.5 rounded-xl font-bold text-sm text-left flex items-center gap-2">
+          <span>🏆</span> Kuis (10 Soal)
+        </button>
+        <button data-nav="refleksi" onclick="navigateTo('refleksi')" class="nav-btn-mob px-3 py-2.5 rounded-xl font-bold text-sm text-left flex items-center gap-2">
+          <span>💭</span> Refleksi
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===================================================================== -->
+  <!-- KONTEN UTAMA DINAMIS                                                  -->
+  <!-- ===================================================================== -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+
+    <!-- =================================================================== -->
+    <!-- 1. HALAMAN BERANDA                                                  -->
+    <!-- =================================================================== -->
+    <section id="page-beranda" class="page-section space-y-8">
+      <!-- Hero Card Bernuansa Rumah Gadang & Budaya Minangkabau -->
+      <div class="relative rounded-3xl bg-gradient-to-br from-marun via-marun-dark to-[#450C11] text-white p-6 sm:p-10 lg:p-12 shadow-minang overflow-hidden border-4 border-emas">
+        <!-- Dekorasi Siluet Atap Rumah Gadang di Latar -->
+        <svg class="absolute bottom-0 right-0 w-full max-w-3xl opacity-15 pointer-events-none" viewBox="0 0 800 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 150C110 150 150 50 175 10C195 75 240 120 300 120C350 120 385 70 400 20C415 70 450 120 500 120C560 120 605 75 625 10C650 50 690 150 780 150L730 210H70L20 150Z" fill="#F3C623"/>
+          <rect x="110" y="210" width="580" height="50" fill="#D4AF37"/>
+        </svg>
+
+        <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <!-- Kolom Teks Sambutan -->
+          <div class="lg:col-span-7 space-y-5">
+            <!-- Badge Identitas -->
+            <div class="inline-flex flex-wrap items-center gap-2 bg-white/15 backdrop-blur-sm border border-emas/60 rounded-2xl px-4 py-2 text-xs sm:text-sm font-semibold text-emas-bright">
+              <span>🎨 Mata Pelajaran: Seni Tari</span>
+              <span>•</span>
+              <span>🏫 Fase C / Kelas V SD</span>
+              <span>•</span>
+              <span>📅 Semester I</span>
+            </div>
+
+            <div>
+              <h1 class="text-3xl sm:text-5xl lg:text-6xl font-bold text-emas-bright tracking-tight drop-shadow">
+                AYO BERKREASI TARI!
+              </h1>
+              <p class="text-xl sm:text-2xl lg:text-3xl font-judul font-semibold text-white mt-2">
+                Jelajahi Keindahan Tari Piring Minangkabau
+              </p>
+            </div>
+
+            <!-- Kalimat Pembuka Ramah Anak -->
+            <div class="bg-krem text-marun-dark rounded-2xl p-4 sm:p-5 border-l-8 border-emas-bright shadow-md">
+              <p class="text-base sm:text-lg font-semibold leading-relaxed">
+                "Halo, teman-teman! Yuk, mengenal Tari Piring dan belajar menciptakan gerakan tari yang menarik bersama teman-teman!"
+              </p>
+            </div>
+
+            <!-- Info Topik & Alokasi Waktu -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+              <div class="bg-white/10 rounded-2xl p-3.5 border border-white/15">
+                <span class="text-emas-bright font-bold block text-xs uppercase tracking-wider">Topik Pembelajaran</span>
+                <span class="font-medium text-white">Eksplorasi dan Kreasi Gerak Tari Terinspirasi dari Tari Piring Minangkabau</span>
+              </div>
+              <div class="bg-white/10 rounded-2xl p-3.5 border border-white/15">
+                <span class="text-emas-bright font-bold block text-xs uppercase tracking-wider">Alokasi Waktu & Penyusun</span>
+                <span class="font-medium text-white block">5 Pertemuan (10 JP × 35 menit)</span>
+                <span class="text-xs text-emas-bright/90">Disusun oleh: <strong>Srianti</strong></span>
+              </div>
+            </div>
+
+            <!-- Tombol Aksi Utama Besar -->
+            <div class="flex flex-wrap items-center gap-4 pt-2">
+              <button onclick="navigateTo('materi')" class="btn-3d-gold bg-emas-bright hover:bg-yellow-300 text-marun-dark font-judul font-bold text-lg sm:text-xl px-7 py-4 rounded-2xl flex items-center gap-3 cursor-pointer">
+                <span>🚀</span>
+                <span>MULAI BELAJAR</span>
+              </button>
+              <button onclick="navigateTo('petunjuk')" class="bg-white hover:bg-krem text-marun font-judul font-bold text-base sm:text-lg px-6 py-4 rounded-2xl border-2 border-emas shadow-md flex items-center gap-2.5 transition cursor-pointer">
+                <span>🧭</span>
+                <span>PETUNJUK PENGGUNAAN</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Kolom Ilustrasi SVG Penari Tari Piring & Rumah Gadang -->
+          <div class="lg:col-span-5 flex justify-center">
+            <div class="relative w-full max-w-md bg-gradient-to-b from-emas-soft to-krem rounded-3xl p-4 sm:p-6 border-4 border-emas-bright shadow-xl animate-float">
+              <svg viewBox="0 0 420 360" class="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
+                <!-- Latar Langit & Rumah Gadang -->
+                <rect x="10" y="10" width="400" height="340" rx="22" fill="#FFF4DC"/>
+                <circle cx="330" cy="70" r="34" fill="#F3C623" opacity="0.45"/>
+                <!-- Atap Rumah Gadang -->
+                <path d="M55 150C105 150 125 90 138 65C150 100 175 125 210 125C245 125 270 100 282 65C295 90 315 150 365 150L342 182H78L55 150Z" fill="#7B1E26"/>
+                <path d="M72 152C112 152 130 104 138 82C148 110 172 132 210 132C248 132 272 110 282 82C290 104 308 152 348 152" stroke="#F3C623" stroke-width="4" stroke-linecap="round"/>
+                <rect x="100" y="182" width="220" height="85" rx="6" fill="#A6831A"/>
+                <rect x="112" y="190" width="196" height="70" fill="#581218"/>
+                <!-- Ornamen Dinding -->
+                <rect x="130" y="202" width="28" height="36" rx="4" fill="#F3C623"/>
+                <rect x="196" y="202" width="28" height="48" rx="4" fill="#D4AF37"/>
+                <rect x="262" y="202" width="28" height="36" rx="4" fill="#F3C623"/>
+
+                <!-- Panggung / Lantai -->
+                <ellipse cx="210" cy="318" rx="175" ry="22" fill="#E6CFA3"/>
+
+                <!-- Penari Kiri (Anak Laki-laki Baju Hitam/Merah & Destar) -->
+                <g transform="translate(65, 145)">
+                  <!-- Kaki -->
+                  <path d="M35 125L25 162H40L48 128" fill="#3B181A"/>
+                  <path d="M55 125L68 162H82L68 128" fill="#3B181A"/>
+                  <!-- Baju Adat Laki-laki -->
+                  <path d="M28 72C28 62 72 62 72 72L78 128H22L28 72Z" fill="#7B1E26"/>
+                  <path d="M26 105H74L78 128H22L26 105Z" fill="#1F1A1A"/>
+                  <path d="M26 105H74" stroke="#F3C623" stroke-width="4"/>
+                  <!-- Lengan & Piring -->
+                  <path d="M28 76L6 62" stroke="#7B1E26" stroke-width="11" stroke-linecap="round"/>
+                  <path d="M72 76L94 90" stroke="#7B1E26" stroke-width="11" stroke-linecap="round"/>
+                  <!-- Piring Kiri -->
+                  <g class="animate-sway">
+                    <ellipse cx="6" cy="54" rx="18" ry="6" fill="#FFFFFF" stroke="#D4AF37" stroke-width="2.5"/>
+                    <ellipse cx="6" cy="54" rx="10" ry="3" fill="#E2E8F0"/>
+                  </g>
+                  <!-- Piring Kanan -->
+                  <g class="animate-sway">
+                    <ellipse cx="95" cy="83" rx="18" ry="6" fill="#FFFFFF" stroke="#D4AF37" stroke-width="2.5"/>
+                  </g>
+                  <!-- Kepala & Destar (Ikat Kepala Minang) -->
+                  <circle cx="50" cy="44" r="20" fill="#FCD5B5"/>
+                  <path d="M30 38C30 24 70 24 70 38L66 26L50 32L34 26L30 38Z" fill="#7B1E26"/>
+                  <path d="M30 37H70" stroke="#F3C623" stroke-width="3"/>
+                  <!-- Wajah Ceria -->
+                  <circle cx="43" cy="44" r="2.2" fill="#2D181A"/>
+                  <circle cx="57" cy="44" r="2.2" fill="#2D181A"/>
+                  <path d="M44 51Q50 56 56 51" stroke="#7B1E26" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+                </g>
+
+                <!-- Penari Tengah Utama (Anak Perempuan Baju Kurung & Suntiang/Tengkuluk Emas) -->
+                <g transform="translate(155, 125)">
+                  <!-- Kaki -->
+                  <path d="M40 145L34 185H49L53 145" fill="#FCD5B5"/>
+                  <path d="M62 145L68 185H83L75 145" fill="#FCD5B5"/>
+                  <!-- Kain Songket Bawah -->
+                  <path d="M28 112H82L88 165H22L28 112Z" fill="#581218"/>
+                  <path d="M25 135H85M23 152H87" stroke="#F3C623" stroke-width="3" stroke-dasharray="6 4"/>
+                  <!-- Baju Kurung Merah Marun -->
+                  <path d="M30 75C30 64 80 64 80 75L85 125H25L30 75Z" fill="#9E2A34"/>
+                  <path d="M55 70V125" stroke="#F3C623" stroke-width="4"/>
+                  <rect x="27" y="108" width="56" height="8" rx="3" fill="#F3C623"/>
+                  <!-- Lengan & Piring -->
+                  <path d="M30 80L6 95" stroke="#9E2A34" stroke-width="12" stroke-linecap="round"/>
+                  <path d="M80 80L104 56" stroke="#9E2A34" stroke-width="12" stroke-linecap="round"/>
+                  <!-- Piring Tangan Kiri -->
+                  <g class="animate-sway">
+                    <ellipse cx="6" cy="87" rx="20" ry="7" fill="#FFFFFF" stroke="#D4AF37" stroke-width="2.5"/>
+                    <ellipse cx="6" cy="87" rx="11" ry="3.5" fill="#E2E8F0"/>
+                  </g>
+                  <!-- Piring Tangan Kanan Atas -->
+                  <g class="animate-sway">
+                    <ellipse cx="105" cy="48" rx="20" ry="7" fill="#FFFFFF" stroke="#D4AF37" stroke-width="2.5"/>
+                    <ellipse cx="105" cy="48" rx="11" ry="3.5" fill="#E2E8F0"/>
+                  </g>
+                  <!-- Mahkota Suntiang Emas -->
+                  <path d="M30 36C32 16 78 16 80 36Z" fill="#F3C623" stroke="#A6831A" stroke-width="2"/>
+                  <circle cx="40" cy="20" r="4" fill="#F3C623"/>
+                  <circle cx="55" cy="15" r="5" fill="#F3C623"/>
+                  <circle cx="70" cy="20" r="4" fill="#F3C623"/>
+                  <!-- Kepala -->
+                  <circle cx="55" cy="46" r="22" fill="#FCD5B5"/>
+                  <path d="M33 44C33 28 77 28 77 44C72 34 38 34 33 44Z" fill="#2D181A"/>
+                  <!-- Wajah Tersenyum -->
+                  <circle cx="47" cy="46" r="2.5" fill="#2D181A"/>
+                  <circle cx="63" cy="46" r="2.5" fill="#2D181A"/>
+                  <circle cx="42" cy="51" r="3" fill="#F48FB1" opacity="0.6"/>
+                  <circle cx="68" cy="51" r="3" fill="#F48FB1" opacity="0.6"/>
+                  <path d="M48 53Q55 60 62 53" stroke="#7B1E26" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                </g>
+
+                <!-- Penari Kanan (Anak Perempuan Baju Kuning Emas & Marun) -->
+                <g transform="translate(275, 148)">
+                  <path d="M32 125L24 160H38L44 125" fill="#FCD5B5"/>
+                  <path d="M52 125L62 160H76L65 125" fill="#FCD5B5"/>
+                  <path d="M24 98H72L77 142H19L24 98Z" fill="#7B1E26"/>
+                  <path d="M26 70C26 60 70 60 70 70L74 106H22L26 70Z" fill="#D4AF37"/>
+                  <path d="M26 75L6 88" stroke="#D4AF37" stroke-width="10" stroke-linecap="round"/>
+                  <path d="M70 75L90 60" stroke="#D4AF37" stroke-width="10" stroke-linecap="round"/>
+                  <g class="animate-sway">
+                    <ellipse cx="6" cy="81" rx="17" ry="6" fill="#FFFFFF" stroke="#7B1E26" stroke-width="2"/>
+                  </g>
+                  <g class="animate-sway">
+                    <ellipse cx="90" cy="53" rx="17" ry="6" fill="#FFFFFF" stroke="#7B1E26" stroke-width="2"/>
+                  </g>
+                  <path d="M30 33C32 17 64 17 66 33Z" fill="#F3C623"/>
+                  <circle cx="48" cy="42" r="19" fill="#FCD5B5"/>
+                  <circle cx="42" cy="42" r="2.2" fill="#2D181A"/>
+                  <circle cx="54" cy="42" r="2.2" fill="#2D181A"/>
+                  <path d="M43 49Q48 54 53 49" stroke="#7B1E26" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+                </g>
+              </svg>
+              <p class="text-center text-xs sm:text-sm font-bold text-marun mt-2">
+                ✨ Ilustrasi Penari Anak-Anak Tari Piring Minangkabau ✨
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Akses Cepat Menu Utama dalam Bentuk Kartu Ceria -->
+      <div>
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-2xl sm:text-3xl font-bold text-marun flex items-center gap-2">
+            <span>🗺️</span> Peta Jelajah Belajar
+          </h2>
+          <span class="text-xs sm:text-sm font-semibold bg-emas-soft text-marun-dark px-3 py-1 rounded-full border border-emas">
+            Klik kartu untuk membuka menu
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <!-- Kartu 1 -->
+          <button onclick="navigateTo('cptp')" class="text-left bg-white hover:bg-emas-soft/60 rounded-3xl p-5 border-2 border-emas/60 shadow-minang transition transform hover:-translate-y-1 cursor-pointer">
+            <div class="w-12 h-12 rounded-2xl bg-marun text-emas-bright flex items-center justify-center text-2xl mb-3 shadow">🎯</div>
+            <h3 class="text-lg font-bold text-marun">Capaian & Tujuan</h3>
+            <p class="text-sm text-gray-600 mt-1">Lihat CP, 5 Tujuan Pembelajaran, dan alur 5 pertemuan proyek tari.</p>
+          </button>
+
+          <!-- Kartu 2 -->
+          <button onclick="navigateTo('materi')" class="text-left bg-white hover:bg-emas-soft/60 rounded-3xl p-5 border-2 border-emas/60 shadow-minang transition transform hover:-translate-y-1 cursor-pointer">
+            <div class="w-12 h-12 rounded-2xl bg-emas-bright text-marun-dark flex items-center justify-center text-2xl mb-3 shadow">📚</div>
+            <h3 class="text-lg font-bold text-marun">6 Materi Tari Piring</h3>
+            <p class="text-sm text-gray-600 mt-1">Pelajari sejarah, unsur pendukung, eksplorasi gerak, pola lantai, hingga penampilan.</p>
+          </button>
+
+          <!-- Kartu 3 -->
+          <button onclick="navigateTo('video')" class="text-left bg-white hover:bg-emas-soft/60 rounded-3xl p-5 border-2 border-emas/60 shadow-minang transition transform hover:-translate-y-1 cursor-pointer">
+            <div class="w-12 h-12 rounded-2xl bg-marun-light text-white flex items-center justify-center text-2xl mb-3 shadow">🎬</div>
+            <h3 class="text-lg font-bold text-marun">Video & Musik Iringan</h3>
+            <p class="text-sm text-gray-600 mt-1">Amati pertunjukan Tari Piring dan putar musik tradisional Minangkabau untuk latihan.</p>
+          </button>
+
+          <!-- Kartu 4 -->
+          <button onclick="navigateTo('kuis')" class="text-left bg-white hover:bg-emas-soft/60 rounded-3xl p-5 border-2 border-emas/60 shadow-minang transition transform hover:-translate-y-1 cursor-pointer">
+            <div class="w-12 h-12 rounded-2xl bg-emerald-600 text-white flex items-center justify-center text-2xl mb-3 shadow">🏆</div>
+            <h3 class="text-lg font-bold text-marun">Kuis & Refleksi</h3>
+            <p class="text-sm text-gray-600 mt-1">Uji pemahamanmu lewat 10 soal kuis seru dan bagikan perasaan belajarmu.</p>
+          </button>
+        </div>
+      </div>
+
+      <!-- Ringkasan Alur 5 Pertemuan PjBL di Beranda -->
+      <div class="bg-white rounded-3xl p-6 sm:p-8 border-2 border-emas/50 shadow-minang">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-5">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-emas-dark bg-emas-soft px-3 py-1 rounded-full">Project Based Learning (PjBL)</span>
+            <h2 class="text-2xl sm:text-3xl font-bold text-marun mt-1.5">Perjalanan Proyek 5 Pertemuan</h2>
+          </div>
+          <p class="text-sm text-gray-600">Klik pertemuan untuk langsung menuju materi terkait</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-3">
+          <button onclick="openMateriBab(0)" class="p-4 rounded-2xl bg-krem hover:bg-emas-soft border-2 border-emas/50 text-left transition cursor-pointer">
+            <span class="inline-block px-2.5 py-0.5 rounded-lg bg-marun text-white text-xs font-bold mb-2">Pertemuan 1</span>
+            <h4 class="font-bold text-marun text-sm">Mengenal Tari Piring & Merancang Proyek</h4>
+            <p class="text-xs text-gray-600 mt-1">Amati ciri khas Tari Piring, gambar, & video pertunjukan.</p>
+          </button>
+
+          <button onclick="openMateriBab(1)" class="p-4 rounded-2xl bg-krem hover:bg-emas-soft border-2 border-emas/50 text-left transition cursor-pointer">
+            <span class="inline-block px-2.5 py-0.5 rounded-lg bg-marun text-white text-xs font-bold mb-2">Pertemuan 2</span>
+            <h4 class="font-bold text-marun text-sm">Unsur Pendukung & Eksplorasi Gerak</h4>
+            <p class="text-xs text-gray-600 mt-1">Musik, properti, kostum, pola lantai, & eksplorasi gerak.</p>
+          </button>
+
+          <button onclick="openMateriBab(3)" class="p-4 rounded-2xl bg-krem hover:bg-emas-soft border-2 border-emas/50 text-left transition cursor-pointer">
+            <span class="inline-block px-2.5 py-0.5 rounded-lg bg-marun text-white text-xs font-bold mb-2">Pertemuan 3</span>
+            <h4 class="font-bold text-marun text-sm">Menyusun Rangkaian Kreasi Gerak</h4>
+            <p class="text-xs text-gray-600 mt-1">Merangkai gerak pembuka, inti, penghubung, & penutup.</p>
+          </button>
+
+          <button onclick="openMateriBab(4)" class="p-4 rounded-2xl bg-krem hover:bg-emas-soft border-2 border-emas/50 text-left transition cursor-pointer">
+            <span class="inline-block px-2.5 py-0.5 rounded-lg bg-marun text-white text-xs font-bold mb-2">Pertemuan 4</span>
+            <h4 class="font-bold text-marun text-sm">Latihan & Penyempurnaan Tari</h4>
+            <p class="text-xs text-gray-600 mt-1">Latihan irama musik, properti aman, pola lantai, & kompak.</p>
+          </button>
+
+          <button onclick="openMateriBab(5)" class="p-4 rounded-2xl bg-krem hover:bg-emas-soft border-2 border-emas/50 text-left transition cursor-pointer">
+            <span class="inline-block px-2.5 py-0.5 rounded-lg bg-marun text-white text-xs font-bold mb-2">Pertemuan 5</span>
+            <h4 class="font-bold text-marun text-sm">Penampilan & Apresiasi Karya</h4>
+            <p class="text-xs text-gray-600 mt-1">Tampil percaya diri bersama kelompok & apresiasi teman.</p>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- 2. MENU PETUNJUK PENGGUNAAN                                         -->
+    <!-- =================================================================== -->
+    <section id="page-petunjuk" class="page-section hidden space-y-6">
+      <div class="bg-white rounded-3xl p-6 sm:p-10 border-2 border-emas shadow-minang">
+        <div class="text-center max-w-2xl mx-auto mb-8">
+          <span class="inline-block px-4 py-1.5 rounded-full bg-emas-soft text-marun font-bold text-sm border border-emas mb-2">
+            🧭 Panduan Belajar Mudah
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-bold text-marun">Petunjuk Penggunaan Media</h2>
+          <p class="text-gray-600 mt-2 text-base">
+            Ikuti 6 langkah sederhana berikut agar kegiatan belajar dan berkreasi tari berjalan seru dan lancar!
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <!-- Langkah 1 -->
+          <div class="bg-krem rounded-3xl p-6 border-2 border-emas/60 flex items-start gap-4">
+            <div class="w-14 h-14 rounded-2xl bg-marun text-emas-bright font-judul font-bold text-2xl flex items-center justify-center shrink-0 shadow">
+              1
+            </div>
+            <div>
+              <div class="text-2xl mb-1">🚀</div>
+              <h3 class="font-bold text-lg text-marun">Klik Tombol Mulai Belajar</h3>
+              <p class="text-sm text-gray-700 mt-1 leading-relaxed">
+                Klik tombol <strong>Mulai Belajar</strong> di halaman beranda atau gunakan tombol menu di bagian atas untuk masuk ke materi utama.
+              </p>
+            </div>
+          </div>
+
+          <!-- Langkah 2 -->
+          <div class="bg-krem rounded-3xl p-6 border-2 border-emas/60 flex items-start gap-4">
+            <div class="w-14 h-14 rounded-2xl bg-marun text-emas-bright font-judul font-bold text-2xl flex items-center justify-center shrink-0 shadow">
+              2
+            </div>
+            <div>
+              <div class="text-2xl mb-1">📚</div>
+              <h3 class="font-bold text-lg text-marun">Pilih Materi yang Dipelajari</h3>
+              <p class="text-sm text-gray-700 mt-1 leading-relaxed">
+                Buka subbab materi secara bertahap (Materi 1 sampai Materi 6) sesuai pertemuan yang sedang dipelajari di kelas.
+              </p>
+            </div>
+          </div>
+
+          <!-- Langkah 3 -->
+          <div class="bg-krem rounded-3xl p-6 border-2 border-emas/60 flex items-start gap-4">
+            <div class="w-14 h-14 rounded-2xl bg-marun text-emas-bright font-judul font-bold text-2xl flex items-center justify-center shrink-0 shadow">
+              3
+            </div>
+            <div>
+              <div class="text-2xl mb-1">🎬</div>
+              <h3 class="font-bold text-lg text-marun">Amati Gambar dan Video</h3>
+              <p class="text-sm text-gray-700 mt-1 leading-relaxed">
+                Perhatikan dengan cermat ilustrasi gerakan, pola lantai, serta video pertunjukan Tari Piring Minangkabau yang ditampilkan.
+              </p>
+            </div>
+          </div>
+
+          <!-- Langkah 4 -->
+          <div class="bg-krem rounded-3xl p-6 border-2 border-emas/60 flex items-start gap-4">
+            <div class="w-14 h-14 rounded-2xl bg-marun text-emas-bright font-judul font-bold text-2xl flex items-center justify-center shrink-0 shadow">
+              4
+            </div>
+            <div>
+              <div class="text-2xl mb-1">🎶</div>
+              <h3 class="font-bold text-lg text-marun">Dengarkan Musik Pengiring</h3>
+              <p class="text-sm text-gray-700 mt-1 leading-relaxed">
+                Buka menu <strong>Musik</strong> untuk mendengarkan musik instrumental bernuansa Minangkabau saat bereksplorasi dan berlatih tari.
+              </p>
+            </div>
+          </div>
+
+          <!-- Langkah 5 -->
+          <div class="bg-krem rounded-3xl p-6 border-2 border-emas/60 flex items-start gap-4">
+            <div class="w-14 h-14 rounded-2xl bg-marun text-emas-bright font-judul font-bold text-2xl flex items-center justify-center shrink-0 shadow">
+              5
+            </div>
+            <div>
+              <div class="text-2xl mb-1">👩‍🏫</div>
+              <h3 class="font-bold text-lg text-marun">Ikuti Arahan Guru</h3>
+              <p class="text-sm text-gray-700 mt-1 leading-relaxed">
+                Selalu dengarkan bimbingan guru saat berdiskusi kelompok, berlatih gerak, maupun menggunakan properti piring tiruan agar tetap aman.
+              </p>
+            </div>
+          </div>
+
+          <!-- Langkah 6 -->
+          <div class="bg-krem rounded-3xl p-6 border-2 border-emas/60 flex items-start gap-4">
+            <div class="w-14 h-14 rounded-2xl bg-marun text-emas-bright font-judul font-bold text-2xl flex items-center justify-center shrink-0 shadow">
+              6
+            </div>
+            <div>
+              <div class="text-2xl mb-1">📝</div>
+              <h3 class="font-bold text-lg text-marun">Sumber Belajar untuk LKPD</h3>
+              <p class="text-sm text-gray-700 mt-1 leading-relaxed">
+                Gunakan informasi, video, dan contoh gerak dalam website ini sebagai sumber belajar untuk mengerjakan <strong>LKPD yang dibagikan guru</strong>.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Catatan Penting -->
+        <div class="mt-8 bg-emas-soft border-2 border-emas rounded-2xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div class="flex items-center gap-3">
+            <span class="text-3xl">💡</span>
+            <p class="text-sm sm:text-base text-marun-dark font-medium">
+              <strong>Tips:</strong> Setelah mempelajari materi, coba kerjakan <strong>Kuis Interaktif</strong> untuk menguji pemahamanmu!
+            </p>
+          </div>
+          <button onclick="navigateTo('materi')" class="btn-3d-maroon bg-marun hover:bg-marun-light text-white font-judul font-bold px-6 py-3 rounded-xl shrink-0 cursor-pointer">
+            Lanjut ke Materi →
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- 3. MENU CAPAIAN DAN TUJUAN PEMBELAJARAN                             -->
+    <!-- =================================================================== -->
+    <section id="page-cptp" class="page-section hidden space-y-6">
+      <!-- Kartu Capaian Pembelajaran -->
+      <div class="bg-gradient-to-r from-marun to-marun-dark text-white rounded-3xl p-6 sm:p-8 border-4 border-emas shadow-minang">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="px-3.5 py-1 rounded-full bg-emas-bright text-marun-dark font-bold text-xs sm:text-sm">
+            Fase C • Kelas V SD • Elemen: Menciptakan (Creating)
+          </span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-bold text-emas-bright mb-3">Capaian Pembelajaran (CP)</h2>
+        <p class="text-base sm:text-lg leading-relaxed text-krem bg-white/10 p-5 rounded-2xl border border-white/20">
+          Pada Fase C, elemen Menciptakan (Creating), murid mampu merangkai gerak tari yang berpijak pada tradisi/kreasi dengan menerapkan desain kelompok. Melalui pembelajaran ini, murid diarahkan untuk mengembangkan gerakan yang terinspirasi dari Tari Piring Minangkabau, menyusun rangkaian gerak tari sederhana, serta menerapkan pola lantai dan kekompakan dalam penampilan kelompok.
+        </p>
+      </div>
+
+      <!-- 5 Kartu Tujuan Pembelajaran (Utuh sesuai RPM) -->
+      <div class="bg-white rounded-3xl p-6 sm:p-8 border-2 border-emas/60 shadow-minang">
+        <h2 class="text-2xl sm:text-3xl font-bold text-marun mb-2">🎯 Tujuan Pembelajaran (TP)</h2>
+        <p class="text-gray-600 text-sm sm:text-base mb-6">
+          Berikut adalah lima tujuan pembelajaran yang akan kita capai bersama melalui rangkaian kegiatan proyek kreasi tari:
+        </p>
+
+        <div class="space-y-4">
+          <!-- TP 1 -->
+          <div class="rounded-2xl bg-krem border-2 border-emas/60 p-5 hover:border-marun transition">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+              <span class="px-3 py-1 rounded-xl bg-marun text-emas-bright font-judul font-bold text-sm">
+                TP 1 • Level Kognitif C1 (Mengidentifikasi)
+              </span>
+              <span class="text-xs font-bold text-marun bg-emas-soft px-2.5 py-1 rounded-lg">Pertemuan 1</span>
+            </div>
+            <p class="text-gray-800 text-sm sm:text-base leading-relaxed">
+              Setelah mengamati gambar dan video pertunjukan Tari Piring Minangkabau yang ditampilkan melalui media pembelajaran digital, murid mampu mengidentifikasi ciri khas gerakan Tari Piring dengan tepat.
+            </p>
+          </div>
+
+          <!-- TP 2 -->
+          <div class="rounded-2xl bg-krem border-2 border-emas/60 p-5 hover:border-marun transition">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+              <span class="px-3 py-1 rounded-xl bg-marun text-emas-bright font-judul font-bold text-sm">
+                TP 2 • Level Kognitif C2 (Menjelaskan)
+              </span>
+              <span class="text-xs font-bold text-marun bg-emas-soft px-2.5 py-1 rounded-lg">Pertemuan 1 & 2</span>
+            </div>
+            <p class="text-gray-800 text-sm sm:text-base leading-relaxed">
+              Setelah menyimak penjelasan materi pada bahan ajar digital dan mengamati video Tari Piring dari YouTube, murid mampu menjelaskan unsur pendukung tari yang meliputi musik pengiring, properti, dan pola lantai dengan benar.
+            </p>
+          </div>
+
+          <!-- TP 3 -->
+          <div class="rounded-2xl bg-krem border-2 border-emas/60 p-5 hover:border-marun transition">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+              <span class="px-3 py-1 rounded-xl bg-marun text-emas-bright font-judul font-bold text-sm">
+                TP 3 • Level Kognitif C4 (Menganalisis)
+              </span>
+              <span class="text-xs font-bold text-marun bg-emas-soft px-2.5 py-1 rounded-lg">Pertemuan 1 & 2</span>
+            </div>
+            <p class="text-gray-800 text-sm sm:text-base leading-relaxed">
+              Dengan mengerjakan LKPD berdasarkan hasil pengamatan video dan bahan ajar, murid mampu menganalisis karakteristik gerakan Tari Piring yang dapat dikembangkan menjadi kreasi gerak tari sederhana dengan tepat.
+            </p>
+          </div>
+
+          <!-- TP 4 -->
+          <div class="rounded-2xl bg-krem border-2 border-emas/60 p-5 hover:border-marun transition">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+              <span class="px-3 py-1 rounded-xl bg-marun text-emas-bright font-judul font-bold text-sm">
+                TP 4 • Level Kognitif C6 (Merancang/Mencipta)
+              </span>
+              <span class="text-xs font-bold text-marun bg-emas-soft px-2.5 py-1 rounded-lg">Pertemuan 2 & 3</span>
+            </div>
+            <p class="text-gray-800 text-sm sm:text-base leading-relaxed">
+              Setelah melakukan kegiatan eksplorasi gerak dengan iringan musik instrumental bernuansa tradisional Minangkabau, murid mampu merancang variasi gerakan tari sederhana yang terinspirasi dari Tari Piring serta merangkainya dengan menerapkan desain kelompok dan pola lantai secara kreatif.
+            </p>
+          </div>
+
+          <!-- TP 5 -->
+          <div class="rounded-2xl bg-krem border-2 border-emas/60 p-5 hover:border-marun transition">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+              <span class="px-3 py-1 rounded-xl bg-marun text-emas-bright font-judul font-bold text-sm">
+                TP 5 • Level Psikomotor P4 (Mengembangkan & Menampilkan)
+              </span>
+              <span class="text-xs font-bold text-marun bg-emas-soft px-2.5 py-1 rounded-lg">Pertemuan 4 & 5</span>
+            </div>
+            <p class="text-gray-800 text-sm sm:text-base leading-relaxed">
+              Setelah melakukan kegiatan eksplorasi, latihan, dan penyempurnaan gerakan, murid mampu mengembangkan gerakan dasar Tari Piring Minangkabau menjadi variasi gerak tari kreasi sederhana serta menampilkannya secara berkelompok dengan memperhatikan irama, kekompakan, penggunaan properti, dan pola lantai.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- 4. MENU MATERI PEMBELAJARAN (6 SUBBAB BERTAHAP)                     -->
+    <!-- =================================================================== -->
+    <section id="page-materi" class="page-section hidden space-y-6">
+      <!-- Navigasi Subbab Materi (6 Bab) -->
+      <div class="bg-white rounded-3xl p-4 sm:p-5 border-2 border-emas/60 shadow-minang">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+          <h2 class="text-xl sm:text-2xl font-bold text-marun flex items-center gap-2">
+            <span>📚</span> Pilih Subbab Materi Pembelajaran
+          </h2>
+          <span id="materiPertemuanBadge" class="text-xs sm:text-sm font-bold bg-marun text-emas-bright px-3.5 py-1.5 rounded-full">
+            Mendukung Pertemuan 1
+          </span>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2">
+          <button onclick="setMateriBab(0)" id="tab-bab-0" class="bab-tab p-3 rounded-2xl font-bold text-xs sm:text-sm text-left border-2 transition cursor-pointer">
+            <span class="block text-xs opacity-80">Materi 1</span>
+            Mengenal Tari Piring
+          </button>
+          <button onclick="setMateriBab(1)" id="tab-bab-1" class="bab-tab p-3 rounded-2xl font-bold text-xs sm:text-sm text-left border-2 transition cursor-pointer">
+            <span class="block text-xs opacity-80">Materi 2</span>
+            Unsur Pendukung Tari
+          </button>
+          <button onclick="setMateriBab(2)" id="tab-bab-2" class="bab-tab p-3 rounded-2xl font-bold text-xs sm:text-sm text-left border-2 transition cursor-pointer">
+            <span class="block text-xs opacity-80">Materi 3</span>
+            Eksplorasi Gerak Tari
+          </button>
+          <button onclick="setMateriBab(3)" id="tab-bab-3" class="bab-tab p-3 rounded-2xl font-bold text-xs sm:text-sm text-left border-2 transition cursor-pointer">
+            <span class="block text-xs opacity-80">Materi 4</span>
+            Menyusun Rangkaian
+          </button>
+          <button onclick="setMateriBab(4)" id="tab-bab-4" class="bab-tab p-3 rounded-2xl font-bold text-xs sm:text-sm text-left border-2 transition cursor-pointer">
+            <span class="block text-xs opacity-80">Materi 5</span>
+            Latihan & Penyempurnaan
+          </button>
+          <button onclick="setMateriBab(5)" id="tab-bab-5" class="bab-tab p-3 rounded-2xl font-bold text-xs sm:text-sm text-left border-2 transition cursor-pointer">
+            <span class="block text-xs opacity-80">Materi 6</span>
+            Penampilan & Apresiasi
+          </button>
+        </div>
+      </div>
+
+      <!-- Kontainer Isi Materi -->
+      <div class="bg-white rounded-3xl p-6 sm:p-8 border-2 border-emas/60 shadow-minang">
+
+        <!-- ==================== MATERI 1 ==================== -->
+        <div id="bab-content-0" class="bab-content space-y-6">
+          <div class="border-b-2 border-emas/40 pb-4">
+            <span class="text-xs font-bold uppercase tracking-wider text-emas-dark bg-emas-soft px-3 py-1 rounded-full">Materi 1 • Pertemuan 1</span>
+            <h3 class="text-2xl sm:text-3xl font-bold text-marun mt-2">Mengenal Tari Piring Minangkabau</h3>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+            <div class="lg:col-span-7 space-y-4 text-gray-800 text-base leading-relaxed">
+              <div class="bg-krem p-5 rounded-2xl border border-emas/60">
+                <h4 class="font-bold text-lg text-marun mb-1.5">1. Apa itu Tari Piring?</h4>
+                <p>
+                  <strong>Tari Piring</strong> (dalam bahasa Minangkabau disebut <em>Tari Piriang</em>) adalah tarian tradisional yang berasal dari daerah <strong>Minangkabau, Provinsi Sumatera Barat</strong>. Tarian ini sangat terkenal karena penarinya menari sambil memegang piring di kedua telapak tangannya.
+                </p>
+              </div>
+
+              <div class="bg-krem p-5 rounded-2xl border border-emas/60">
+                <h4 class="font-bold text-lg text-marun mb-1.5">2. Sejarah Singkat & Perkembangan</h4>
+                <p>
+                  Pada awalnya, Tari Piring merupakan bagian dari upacara adat masyarakat Minangkabau sebagai <strong>ungkapan rasa syukur kepada Tuhan</strong> atas hasil panen padi yang melimpah. Seiring berkembangnya zaman, Tari Piring berkembang menjadi seni pertunjukan rakyat yang ditampilkan pada acara penyambutan tamu, pernikahan adat, dan festival budaya.
+                </p>
+              </div>
+
+              <div class="bg-krem p-5 rounded-2xl border border-emas/60">
+                <h4 class="font-bold text-lg text-marun mb-1.5">3. Ciri Khas Gerakan & Penggunaan Properti</h4>
+                <ul class="list-disc pl-5 space-y-1.5">
+                  <li><strong>Gerakan tangan lincah dan mengayun:</strong> Penari mengayunkan kedua tangan ke atas, ke bawah, ke samping, dan memutar piring dengan luwes.</li>
+                  <li><strong>Piring tidak terjatuh:</strong> Meskipun gerakan penari cepat dan dinamis, piring tetap seimbang di telapak tangan dan tidak terlepas.</li>
+                  <li><strong>Gerakan kaki mantap:</strong> Langkah kaki penari terinspirasi dari gerak dasar pencak silat Minangkabau (<em>silek</em>) yang kokoh.</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Kolom Ilustrasi & Tahukah Kamu -->
+            <div class="lg:col-span-5 space-y-5">
+              <!-- Ilustrasi SVG Penari & Piring -->
+              <div class="bg-gradient-to-b from-emas-soft to-krem rounded-3xl p-5 border-2 border-emas text-center">
+                <svg viewBox="0 0 320 220" class="w-full max-w-xs mx-auto" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="160" cy="110" r="95" fill="#F3C623" opacity="0.22"/>
+                  <!-- Busur Ayunan Tangan -->
+                  <path d="M55 95C85 45 235 45 265 95" stroke="#D4AF37" stroke-width="3" stroke-dasharray="6 6" fill="none"/>
+                  <!-- Penari -->
+                  <path d="M125 140H195L205 198H115L125 140Z" fill="#7B1E26"/>
+                  <path d="M130 92C130 80 190 80 190 92L195 145H125L130 92Z" fill="#9E2A34"/>
+                  <rect x="128" y="132" width="64" height="9" rx="3" fill="#F3C623"/>
+                  <!-- Lengan -->
+                  <path d="M130 98L82 82" stroke="#9E2A34" stroke-width="13" stroke-linecap="round"/>
+                  <path d="M190 98L238 82" stroke="#9E2A34" stroke-width="13" stroke-linecap="round"/>
+                  <!-- Dua Piring -->
+                  <g class="animate-sway">
+                    <ellipse cx="78" cy="74" rx="24" ry="8" fill="#FFFFFF" stroke="#7B1E26" stroke-width="2.5"/>
+                    <ellipse cx="78" cy="74" rx="13" ry="4" fill="#E2E8F0"/>
+                  </g>
+                  <g class="animate-sway">
+                    <ellipse cx="242" cy="74" rx="24" ry="8" fill="#FFFFFF" stroke="#7B1E26" stroke-width="2.5"/>
+                    <ellipse cx="242" cy="74" rx="13" ry="4" fill="#E2E8F0"/>
+                  </g>
+                  <!-- Kepala & Hiasan -->
+                  <path d="M134 45C138 22 182 22 186 45Z" fill="#F3C623"/>
+                  <circle cx="160" cy="56" r="24" fill="#FCD5B5"/>
+                  <circle cx="152" cy="56" r="2.5" fill="#2D181A"/>
+                  <circle cx="168" cy="56" r="2.5" fill="#2D181A"/>
+                  <path d="M153 64Q160 70 167 64" stroke="#7B1E26" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                </svg>
+                <p class="text-xs font-bold text-marun mt-2">
+                  Keseimbangan dan kelincahan ayunan tangan adalah ciri utama Tari Piring.
+                </p>
+              </div>
+
+              <!-- Kotak TAHUKAH KAMU? -->
+              <div class="bg-marun text-white rounded-3xl p-5 border-4 border-emas-bright shadow-md">
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="text-2xl">🌟</span>
+                  <h4 class="font-judul text-xl font-bold text-emas-bright">TAHUKAH KAMU?</h4>
+                </div>
+                <p class="text-sm text-krem leading-relaxed">
+                  Dalam pertunjukan Tari Piring tradisional, penari sering mengenakan <strong>cincin khusus di jari tengah</strong> untuk mengetuk bagian bawah piring secara ritmis! Ketukan tersebut menghasilkan bunyi <em>"ting-ting"</em> yang selaras dengan musik pengiring.
+                </p>
+              </div>
+
+              <!-- Nilai Budaya -->
+              <div class="bg-emas-soft rounded-2xl p-4 border border-emas">
+                <h4 class="font-bold text-marun text-base mb-1">💛 Nilai Budaya Tari Piring</h4>
+                <p class="text-sm text-gray-800">
+                  Mengajarkan <strong>rasa syukur, kegembiraan, kerja sama, ketelitian,</strong> dan semangat gotong royong masyarakat Minangkabau.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== MATERI 2 ==================== -->
+        <div id="bab-content-1" class="bab-content hidden space-y-6">
+          <div class="border-b-2 border-emas/40 pb-4">
+            <span class="text-xs font-bold uppercase tracking-wider text-emas-dark bg-emas-soft px-3 py-1 rounded-full">Materi 2 • Pertemuan 1 & 2</span>
+            <h3 class="text-2xl sm:text-3xl font-bold text-marun mt-2">Unsur Pendukung Tari</h3>
+            <p class="text-gray-600 text-sm sm:text-base mt-1">
+              Sebuah pertunjukan tari menjadi lebih hidup dan indah karena didukung oleh empat unsur berikut:
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <!-- A. Musik Pengiring -->
+            <div class="bg-krem rounded-3xl p-5 border-2 border-emas/60 space-y-2.5">
+              <div class="w-12 h-12 rounded-2xl bg-marun text-emas-bright flex items-center justify-center text-2xl">🎵</div>
+              <h4 class="text-xl font-bold text-marun">A. Musik Pengiring</h4>
+              <p class="text-sm text-gray-700 leading-relaxed">
+                <strong>Musik pengiring</strong> adalah bunyi-bunyian atau alunan alat musik yang mengiringi gerak penari.
+              </p>
+              <ul class="text-sm text-gray-700 list-disc pl-4 space-y-1">
+                <li><strong>Fungsi:</strong> Mengatur tempo/ketukan gerak dan membangun suasana ceria.</li>
+                <li><strong>Hubungan gerak & irama:</strong> Gerakan penari mengikuti ketukan musik agar selaras dan kompak.</li>
+                <li><strong>Contoh alat musik Minang:</strong> <em>Talempong</em>, <em>Saluang</em> (seruling bambu), dan <em>Gandang</em> (gendang).</li>
+              </ul>
+            </div>
+
+            <!-- B. Properti Tari -->
+            <div class="bg-krem rounded-3xl p-5 border-2 border-emas/60 space-y-2.5">
+              <div class="w-12 h-12 rounded-2xl bg-marun text-emas-bright flex items-center justify-center text-2xl">🍽️</div>
+              <h4 class="text-xl font-bold text-marun">B. Properti Tari</h4>
+              <p class="text-sm text-gray-700 leading-relaxed">
+                <strong>Properti tari</strong> adalah benda atau perlengkapan yang dibawa dan dimainkan oleh penari saat menari.
+              </p>
+              <ul class="text-sm text-gray-700 list-disc pl-4 space-y-1">
+                <li><strong>Fungsi:</strong> Memperjelas tema tarian dan menambah keindahan gerak.</li>
+                <li><strong>Properti Tari Piring:</strong> Sepasang piring di tangan kanan dan kiri.</li>
+              </ul>
+              <div class="bg-amber-100 border-l-4 border-amber-600 p-3 rounded-xl text-xs text-amber-950 font-semibold">
+                ⚠️ Keselamatan Praktik: Untuk latihan di sekolah, gunakan <strong>piring plastik atau piring tiruan dari karton</strong>, BUKAN piring kaca! Pegang dengan mantap dan jangan diayunkan ke arah teman.
+              </div>
+            </div>
+
+            <!-- C. Kostum Tari -->
+            <div class="bg-krem rounded-3xl p-5 border-2 border-emas/60 space-y-2.5">
+              <div class="w-12 h-12 rounded-2xl bg-marun text-emas-bright flex items-center justify-center text-2xl">👘</div>
+              <h4 class="text-xl font-bold text-marun">C. Kostum Tari</h4>
+              <p class="text-sm text-gray-700 leading-relaxed">
+                <strong>Kostum tari</strong> adalah pakaian dan hiasan yang dikenakan penari saat pertunjukan.
+              </p>
+              <ul class="text-sm text-gray-700 list-disc pl-4 space-y-1">
+                <li><strong>Busana Minangkabau:</strong> Baju kurung warna cerah (merah, kuning emas, hitam), kain songket, hiasan kepala (<em>tengkuluk</em>/<em>suntiang</em> untuk putri, <em>destar</em> untuk putra).</li>
+                <li><strong>Fungsi:</strong> Memperkuat karakter budaya daerah dan keindahan penampilan.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- D. Pola Lantai Interaktif -->
+          <div class="bg-gradient-to-br from-emas-soft to-krem rounded-3xl p-6 border-2 border-emas">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+              <div>
+                <h4 class="text-xl sm:text-2xl font-bold text-marun">D. Pola Lantai (Klik untuk Melihat Formasi Penari!)</h4>
+                <p class="text-sm text-gray-700">
+                  <strong>Pola lantai</strong> adalah garis imajiner di lantai yang dilalui atau dibentuk oleh posisi para penari saat menari berkelompok.
+                </p>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+              <!-- Tombol Pilih 4 Pola Lantai -->
+              <div class="lg:col-span-5 grid grid-cols-2 gap-3">
+                <button onclick="selectPolaLantai('lurus')" id="btn-pola-lurus" class="pola-btn p-4 rounded-2xl border-2 text-left font-bold transition cursor-pointer">
+                  <span class="text-xl block mb-1">➖</span>
+                  <span class="text-sm sm:text-base block">1. Garis Lurus</span>
+                  <span class="text-xs font-normal opacity-80">Horizontal / Vertikal</span>
+                </button>
+                <button onclick="selectPolaLantai('diagonal')" id="btn-pola-diagonal" class="pola-btn p-4 rounded-2xl border-2 text-left font-bold transition cursor-pointer">
+                  <span class="text-xl block mb-1">╱</span>
+                  <span class="text-sm sm:text-base block">2. Garis Diagonal</span>
+                  <span class="text-xs font-normal opacity-80">Menyerong di panggung</span>
+                </button>
+                <button onclick="selectPolaLantai('lingkaran')" id="btn-pola-lingkaran" class="pola-btn p-4 rounded-2xl border-2 text-left font-bold transition cursor-pointer">
+                  <span class="text-xl block mb-1">⭕</span>
+                  <span class="text-sm sm:text-base block">3. Lingkaran</span>
+                  <span class="text-xs font-normal opacity-80">Melengkung penuh</span>
+                </button>
+                <button onclick="selectPolaLantai('setengah')" id="btn-pola-setengah" class="pola-btn p-4 rounded-2xl border-2 text-left font-bold transition cursor-pointer">
+                  <span class="text-xl block mb-1">🌙</span>
+                  <span class="text-sm sm:text-base block">4. Setengah Lingkaran</span>
+                  <span class="text-xs font-normal opacity-80">Melengkung terbuka</span>
+                </button>
+              </div>
+
+              <!-- Visualisasi Panggung SVG Pola Lantai -->
+              <div class="lg:col-span-7 bg-white rounded-3xl p-5 border-2 border-marun/30 shadow-inner">
+                <div class="flex items-center justify-between text-xs font-bold text-gray-500 mb-2">
+                  <span>🎭 AREA PANGGUNG / KELAS</span>
+                  <span class="text-marun">● = Posisi Penari (5 Orang)</span>
+                </div>
+                <svg id="polaLantaiSvg" viewBox="0 0 400 200" class="w-full h-48 bg-krem rounded-2xl border border-emas/60" xmlns="http://www.w3.org/2000/svg">
+                  <!-- Arah Penonton -->
+                  <text x="200" y="190" text-anchor="middle" font-size="11" font-weight="bold" fill="#7B1E26">▲ ARAH PENONTON / DEPAN KELAS ▲</text>
+                  <line id="polaGuideLine" x1="60" y1="95" x2="340" y2="95" stroke="#D4AF37" stroke-width="4" stroke-dasharray="8 6" />
+                  <path id="polaGuideCurve" d="" stroke="#D4AF37" stroke-width="4" stroke-dasharray="8 6" fill="none" />
+                  <!-- 5 Titik Penari yang berpindah halus -->
+                  <g id="dancer-dot-1" style="transition: transform 0.6s ease;">
+                    <circle cx="0" cy="0" r="16" fill="#7B1E26" stroke="#F3C623" stroke-width="3"/>
+                    <text x="0" y="5" text-anchor="middle" fill="#FFF" font-size="12" font-weight="bold">1</text>
+                  </g>
+                  <g id="dancer-dot-2" style="transition: transform 0.6s ease;">
+                    <circle cx="0" cy="0" r="16" fill="#7B1E26" stroke="#F3C623" stroke-width="3"/>
+                    <text x="0" y="5" text-anchor="middle" fill="#FFF" font-size="12" font-weight="bold">2</text>
+                  </g>
+                  <g id="dancer-dot-3" style="transition: transform 0.6s ease;">
+                    <circle cx="0" cy="0" r="16" fill="#9E2A34" stroke="#F3C623" stroke-width="3"/>
+                    <text x="0" y="5" text-anchor="middle" fill="#FFF" font-size="12" font-weight="bold">3</text>
+                  </g>
+                  <g id="dancer-dot-4" style="transition: transform 0.6s ease;">
+                    <circle cx="0" cy="0" r="16" fill="#7B1E26" stroke="#F3C623" stroke-width="3"/>
+                    <text x="0" y="5" text-anchor="middle" fill="#FFF" font-size="12" font-weight="bold">4</text>
+                  </g>
+                  <g id="dancer-dot-5" style="transition: transform 0.6s ease;">
+                    <circle cx="0" cy="0" r="16" fill="#7B1E26" stroke="#F3C623" stroke-width="3"/>
+                    <text x="0" y="5" text-anchor="middle" fill="#FFF" font-size="12" font-weight="bold">5</text>
+                  </g>
+                </svg>
+                <p id="polaLantaiDesc" class="text-sm text-gray-800 font-medium mt-3 bg-emas-soft p-3 rounded-xl">
+                  <strong>Pola Lantai Garis Lurus:</strong> Penari berbaris lurus ke samping (horizontal) atau ke belakang (vertikal). Memberikan kesan rapi, kompak, dan kuat.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== MATERI 3 ==================== -->
+        <div id="bab-content-2" class="bab-content hidden space-y-6">
+          <div class="border-b-2 border-emas/40 pb-4">
+            <span class="text-xs font-bold uppercase tracking-wider text-emas-dark bg-emas-soft px-3 py-1 rounded-full">Materi 3 • Pertemuan 2</span>
+            <h3 class="text-2xl sm:text-3xl font-bold text-marun mt-2">Eksplorasi Gerak Tari</h3>
+          </div>
+
+          <div class="bg-krem rounded-2xl p-5 border-l-8 border-marun">
+            <h4 class="font-bold text-lg text-marun">Apa itu Eksplorasi Gerak?</h4>
+            <p class="text-gray-800 text-sm sm:text-base mt-1 leading-relaxed">
+              <strong>Eksplorasi gerak</strong> adalah kegiatan mencoba, mencari, dan menemukan berbagai kemungkinan gerakan tubuh (tangan, kaki, dan badan) secara kreatif berdasarkan pengalaman sehari-hari dan lingkungan sekitar.
+            </p>
+          </div>
+
+          <!-- Peringatan Penting sesuai Ketentuan N.12 -->
+          <div class="bg-emas-soft border-2 border-emas rounded-2xl p-4 flex items-start gap-3">
+            <span class="text-2xl">📌</span>
+            <p class="text-sm text-marun-dark font-semibold">
+              <strong>Penting untuk Diingat:</strong> Contoh gerakan di bawah ini adalah <strong>sumber inspirasi untuk menciptakan kreasi gerak tari sederhana</strong> yang terinspirasi dari Tari Piring, <strong>bukan gerakan tradisional baku Tari Piring</strong>. Kalian boleh mengembangkannya sesuai kreativitas kelompok!
+            </p>
+          </div>
+
+          <!-- Kartu Interaktif Sumber Inspirasi Gerakan -->
+          <div>
+            <h4 class="font-bold text-lg text-marun mb-3">Klik Contoh Inspirasi Gerakan untuk Melihat Cara Mengembangkannya:</h4>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <!-- Inspirasi 1: Memanen Padi -->
+              <button onclick="showEksplorasi('panen')" id="eks-panen" class="eks-card p-5 rounded-3xl border-2 text-left transition cursor-pointer">
+                <div class="text-4xl mb-2">🌾</div>
+                <h5 class="font-bold text-lg text-marun">1. Gerakan Memanen</h5>
+                <p class="text-xs text-gray-600 mt-1">Inspirasi kegiatan bertani & bersyukur atas panen.</p>
+              </button>
+
+              <!-- Inspirasi 2: Burung Terbang -->
+              <button onclick="showEksplorasi('burung')" id="eks-burung" class="eks-card p-5 rounded-3xl border-2 text-left transition cursor-pointer">
+                <div class="text-4xl mb-2">🕊️</div>
+                <h5 class="font-bold text-lg text-marun">2. Burung Terbang</h5>
+                <p class="text-xs text-gray-600 mt-1">Inspirasi keindahan alam & kepakan sayap lembut.</p>
+              </button>
+
+              <!-- Inspirasi 3: Angin Bertiup -->
+              <button onclick="showEksplorasi('angin')" id="eks-angin" class="eks-card p-5 rounded-3xl border-2 text-left transition cursor-pointer">
+                <div class="text-4xl mb-2">🍃</div>
+                <h5 class="font-bold text-lg text-marun">3. Angin Bertiup</h5>
+                <p class="text-xs text-gray-600 mt-1">Inspirasi pohon & padi yang melambai tertiup angin.</p>
+              </button>
+
+              <!-- Inspirasi 4: Mengambil/Membawa Benda -->
+              <button onclick="showEksplorasi('bawa')" id="eks-bawa" class="eks-card p-5 rounded-3xl border-2 text-left transition cursor-pointer">
+                <div class="text-4xl mb-2">🤲</div>
+                <h5 class="font-bold text-lg text-marun">4. Membawa Benda</h5>
+                <p class="text-xs text-gray-600 mt-1">Inspirasi kegiatan sehari-hari membawa hidangan/piring.</p>
+              </button>
+            </div>
+          </div>
+
+          <!-- Panel Detail & Ilustrasi SVG Eksplorasi Gerak -->
+          <div class="bg-krem rounded-3xl p-6 border-2 border-emas grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+            <div class="md:col-span-5 bg-white rounded-2xl p-4 border border-emas/60 flex flex-col items-center justify-center">
+              <svg id="eksplorasiSvg" viewBox="0 0 260 200" class="w-full max-w-[240px] h-44" xmlns="http://www.w3.org/2000/svg">
+                <!-- Diisi secara dinamis oleh JS -->
+              </svg>
+              <span id="eksplorasiCaption" class="text-xs font-bold text-marun mt-2 text-center">Ilustrasi Gerak Inspirasi Memanen</span>
+            </div>
+
+            <div class="md:col-span-7 space-y-3">
+              <span class="inline-block px-3 py-1 rounded-full bg-marun text-emas-bright text-xs font-bold">Panduan Eksplorasi Tubuh</span>
+              <h4 id="eksplorasiTitle" class="text-2xl font-bold text-marun">Inspirasi 1: Gerakan Memanen Padi</h4>
+              <p id="eksplorasiDesc" class="text-gray-800 text-sm sm:text-base leading-relaxed">
+                Bayangkan gerakan petani saat memotong dan mengumpulkan padi di sawah.
+              </p>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-1">
+                <div class="bg-white p-3 rounded-xl border border-emas/60">
+                  <span class="text-xs font-bold text-marun block">✋ Gerakan Tangan</span>
+                  <span id="eksTangan" class="text-xs text-gray-700">Tangan kanan menyabit ke depan, tangan kiri memegang piring tiruan sejajar dada.</span>
+                </div>
+                <div class="bg-white p-3 rounded-xl border border-emas/60">
+                  <span class="text-xs font-bold text-marun block">🦶 Gerakan Kaki</span>
+                  <span id="eksKaki" class="text-xs text-gray-700">Melangkah maju-mundur pelan sambil menekuk lutut sedikit (merendah).</span>
+                </div>
+                <div class="bg-white p-3 rounded-xl border border-emas/60">
+                  <span class="text-xs font-bold text-marun block">🧍 Gerakan Badan</span>
+                  <span id="eksBadan" class="text-xs text-gray-700">Badan condong ringan ke depan lalu tegak kembali dengan senyum ceria.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== MATERI 4 ==================== -->
+        <div id="bab-content-3" class="bab-content hidden space-y-6">
+          <div class="border-b-2 border-emas/40 pb-4">
+            <span class="text-xs font-bold uppercase tracking-wider text-emas-dark bg-emas-soft px-3 py-1 rounded-full">Materi 4 • Pertemuan 3</span>
+            <h3 class="text-2xl sm:text-3xl font-bold text-marun mt-2">Menyusun Rangkaian Kreasi Gerak Tari</h3>
+            <p class="text-gray-600 text-sm sm:text-base mt-1">
+              Agar gerakan hasil eksplorasi menjadi sebuah tarian yang utuh dan indah, susunlah gerakan ke dalam empat bagian berikut:
+            </p>
+          </div>
+
+          <!-- 4 Bagian Rangkaian Tari -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="bg-krem rounded-3xl p-5 border-2 border-marun/30 relative">
+              <span class="w-9 h-9 rounded-full bg-marun text-emas-bright font-bold flex items-center justify-center mb-3">1</span>
+              <h4 class="font-bold text-lg text-marun">Gerakan Pembuka</h4>
+              <p class="text-sm text-gray-700 mt-1">
+                Gerakan untuk <strong>mengawali penampilan</strong>. Misalnya: berjalan masuk menuju posisi pola lantai sambil memberi salam hormat dengan piring.
+              </p>
+            </div>
+
+            <div class="bg-krem rounded-3xl p-5 border-2 border-marun/30 relative">
+              <span class="w-9 h-9 rounded-full bg-marun text-emas-bright font-bold flex items-center justify-center mb-3">2</span>
+              <h4 class="font-bold text-lg text-marun">Gerakan Inti</h4>
+              <p class="text-sm text-gray-700 mt-1">
+                <strong>Gerakan utama</strong> dalam tarian yang paling menonjolkan variasi gerak tangan, kaki, dan ayunan piring kreasi kelompok.
+              </p>
+            </div>
+
+            <div class="bg-krem rounded-3xl p-5 border-2 border-marun/30 relative">
+              <span class="w-9 h-9 rounded-full bg-marun text-emas-bright font-bold flex items-center justify-center mb-3">3</span>
+              <h4 class="font-bold text-lg text-marun">Gerakan Penghubung</h4>
+              <p class="text-sm text-gray-700 mt-1">
+                Gerakan peralihan untuk <strong>menghubungkan satu gerakan dengan gerakan lainnya</strong> atau saat berpindah pola lantai.
+              </p>
+            </div>
+
+            <div class="bg-krem rounded-3xl p-5 border-2 border-marun/30 relative">
+              <span class="w-9 h-9 rounded-full bg-marun text-emas-bright font-bold flex items-center justify-center mb-3">4</span>
+              <h4 class="font-bold text-lg text-marun">Gerakan Penutup</h4>
+              <p class="text-sm text-gray-700 mt-1">
+                Gerakan untuk <strong>mengakhiri penampilan</strong> dengan rapi dan berkesan, misalnya pose akhir bersama mengangkat piring lalu hormat.
+              </p>
+            </div>
+          </div>
+
+          <!-- Simulasi Desain Kelompok & Perpindahan Posisi -->
+          <div class="bg-emas-soft rounded-3xl p-6 border-2 border-emas">
+            <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+              <div>
+                <h4 class="text-xl font-bold text-marun">🔄 Simulasi Desain Kelompok & Perpindahan Pola Lantai</h4>
+                <p class="text-sm text-gray-700">
+                  Klik setiap tahap di bawah untuk melihat contoh bagaimana 4 penari berpindah posisi secara teratur dari Pembuka hingga Penutup:
+                </p>
+              </div>
+              <div class="flex flex-wrap gap-2">
+                <button onclick="setRangkaianStage(1)" id="stage-btn-1" class="stage-btn px-3.5 py-2 rounded-xl font-bold text-xs sm:text-sm border-2 transition cursor-pointer">
+                  1. Pembuka (Garis Lurus)
+                </button>
+                <button onclick="setRangkaianStage(2)" id="stage-btn-2" class="stage-btn px-3.5 py-2 rounded-xl font-bold text-xs sm:text-sm border-2 transition cursor-pointer">
+                  2. Inti (Diagonal)
+                </button>
+                <button onclick="setRangkaianStage(3)" id="stage-btn-3" class="stage-btn px-3.5 py-2 rounded-xl font-bold text-xs sm:text-sm border-2 transition cursor-pointer">
+                  3. Penghubung (Lingkaran)
+                </button>
+                <button onclick="setRangkaianStage(4)" id="stage-btn-4" class="stage-btn px-3.5 py-2 rounded-xl font-bold text-xs sm:text-sm border-2 transition cursor-pointer">
+                  4. Penutup (Setengah Lingkaran)
+                </button>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-5 items-center bg-white rounded-2xl p-5 border border-emas">
+              <div class="md:col-span-6">
+                <svg id="rangkaianSvg" viewBox="0 0 360 170" class="w-full h-44 bg-krem rounded-xl border border-emas/60" xmlns="http://www.w3.org/2000/svg">
+                  <text x="180" y="160" text-anchor="middle" font-size="10" font-weight="bold" fill="#7B1E26">DEPAN KELAS / PENONTON</text>
+                  <g id="rk-dancer-1" style="transition: transform 0.6s ease;">
+                    <circle cx="0" cy="0" r="16" fill="#7B1E26" stroke="#F3C623" stroke-width="3"/>
+                    <text x="0" y="5" text-anchor="middle" fill="#FFF" font-size="12" font-weight="bold">A</text>
+                  </g>
+                  <g id="rk-dancer-2" style="transition: transform 0.6s ease;">
+                    <circle cx="0" cy="0" r="16" fill="#9E2A34" stroke="#F3C623" stroke-width="3"/>
+                    <text x="0" y="5" text-anchor="middle" fill="#FFF" font-size="12" font-weight="bold">B</text>
+                  </g>
+                  <g id="rk-dancer-3" style="transition: transform 0.6s ease;">
+                    <circle cx="0" cy="0" r="16" fill="#9E2A34" stroke="#F3C623" stroke-width="3"/>
+                    <text x="0" y="5" text-anchor="middle" fill="#FFF" font-size="12" font-weight="bold">C</text>
+                  </g>
+                  <g id="rk-dancer-4" style="transition: transform 0.6s ease;">
+                    <circle cx="0" cy="0" r="16" fill="#7B1E26" stroke="#F3C623" stroke-width="3"/>
+                    <text x="0" y="5" text-anchor="middle" fill="#FFF" font-size="12" font-weight="bold">D</text>
+                  </g>
+                </svg>
+              </div>
+              <div class="md:col-span-6 space-y-2">
+                <h5 id="rangkaianStageTitle" class="font-bold text-lg text-marun">Tahap 1: Gerakan Pembuka — Formasi Garis Lurus</h5>
+                <p id="rangkaianStageDesc" class="text-sm text-gray-700 leading-relaxed">
+                  Penari A, B, C, dan D berbaris lurus menghadap penonton. Semua anggota memberi salam pembuka secara bersamaan mengikuti 8 hitungan musik.
+                </p>
+                <div class="bg-krem p-3 rounded-xl text-xs text-marun-dark font-semibold">
+                  💡 <strong>Tips Desain Kelompok:</strong> Beri jarak sekitar satu rentangan tangan antarpenari agar piring tidak saling bersenggolan saat berpindah posisi!
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== MATERI 5 ==================== -->
+        <div id="bab-content-4" class="bab-content hidden space-y-6">
+          <div class="border-b-2 border-emas/40 pb-4">
+            <span class="text-xs font-bold uppercase tracking-wider text-emas-dark bg-emas-soft px-3 py-1 rounded-full">Materi 5 • Pertemuan 4</span>
+            <h3 class="text-2xl sm:text-3xl font-bold text-marun mt-2">Latihan dan Penyempurnaan Kreasi Tari</h3>
+            <p class="text-gray-600 text-sm sm:text-base mt-1">
+              Rangkaian gerak yang sudah disusun perlu dilatih berulang kali agar semakin kompak dan percaya diri!
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            <!-- 6 Hal yang Perlu Diperhatikan -->
+            <div class="lg:col-span-6 space-y-3">
+              <h4 class="font-bold text-lg text-marun">6 Hal Penting Saat Latihan Kelompok:</h4>
+              <div class="space-y-2.5 text-sm">
+                <div class="bg-krem p-3.5 rounded-2xl border border-emas/60 flex items-start gap-3">
+                  <span class="text-lg">1️⃣</span>
+                  <div><strong>Mengingat urutan gerakan:</strong> Hafalkan urutan dari pembuka, inti, penghubung, sampai penutup.</div>
+                </div>
+                <div class="bg-krem p-3.5 rounded-2xl border border-emas/60 flex items-start gap-3">
+                  <span class="text-lg">2️⃣</span>
+                  <div><strong>Menyesuaikan dengan irama musik:</strong> Hitung ketukan (1–8) agar gerak selaras dengan musik.</div>
+                </div>
+                <div class="bg-krem p-3.5 rounded-2xl border border-emas/60 flex items-start gap-3">
+                  <span class="text-lg">3️⃣</span>
+                  <div><strong>Menggunakan properti secara aman:</strong> Pegang piring plastik/karton dengan hati-hati dan tidak dilempar.</div>
+                </div>
+                <div class="bg-krem p-3.5 rounded-2xl border border-emas/60 flex items-start gap-3">
+                  <span class="text-lg">4️⃣</span>
+                  <div><strong>Memperhatikan pola lantai:</strong> Pastikan perpindahan posisi teratur dan tidak saling bertabrakan.</div>
+                </div>
+                <div class="bg-krem p-3.5 rounded-2xl border border-emas/60 flex items-start gap-3">
+                  <span class="text-lg">5️⃣</span>
+                  <div><strong>Menjaga kekompakan kelompok:</strong> Saling membantu dan menyesuaikan tempo antaranggota kelompok.</div>
+                </div>
+                <div class="bg-krem p-3.5 rounded-2xl border border-emas/60 flex items-start gap-3">
+                  <span class="text-lg">6️⃣</span>
+                  <div><strong>Memperbaiki gerakan yang belum sesuai:</strong> Ulangi bagian yang masih ragu-ragu bersama teman.</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Checklist Latihan Interaktif (Pengingat Materi, Bukan LKPD) -->
+            <div class="lg:col-span-6 bg-emas-soft rounded-3xl p-6 border-2 border-emas flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between gap-2 mb-2">
+                  <h4 class="font-bold text-xl text-marun">✅ Checklist Pengingat Latihan</h4>
+                  <span id="checklistProgress" class="px-3 py-1 rounded-full bg-marun text-emas-bright text-xs font-bold">0 / 6 Siap</span>
+                </div>
+                <p class="text-xs text-gray-700 mb-4">
+                  Centang daftar pengingat berikut saat kelompokmu selesai berlatih di kelas (Catatan: Checklist ini adalah pengingat latihan mandiri, bukan pengganti LKPD dari guru).
+                </p>
+
+                <div class="space-y-2.5" id="practiceChecklist">
+                  <label class="flex items-center gap-3 bg-white p-3.5 rounded-2xl border border-emas/60 cursor-pointer hover:bg-krem transition">
+                    <input type="checkbox" onchange="updateChecklistCount()" class="practice-chk w-5 h-5 accent-marun rounded" />
+                    <span class="text-sm font-medium text-gray-800">Kami sudah hafal urutan gerak pembuka, inti, penghubung, dan penutup.</span>
+                  </label>
+                  <label class="flex items-center gap-3 bg-white p-3.5 rounded-2xl border border-emas/60 cursor-pointer hover:bg-krem transition">
+                    <input type="checkbox" onchange="updateChecklistCount()" class="practice-chk w-5 h-5 accent-marun rounded" />
+                    <span class="text-sm font-medium text-gray-800">Gerakan kami sudah sesuai dengan ketukan irama musik pengiring.</span>
+                  </label>
+                  <label class="flex items-center gap-3 bg-white p-3.5 rounded-2xl border border-emas/60 cursor-pointer hover:bg-krem transition">
+                    <input type="checkbox" onchange="updateChecklistCount()" class="practice-chk w-5 h-5 accent-marun rounded" />
+                    <span class="text-sm font-medium text-gray-800">Kami menggunakan piring plastik/karton tiruan dengan hati-hati dan aman.</span>
+                  </label>
+                  <label class="flex items-center gap-3 bg-white p-3.5 rounded-2xl border border-emas/60 cursor-pointer hover:bg-krem transition">
+                    <input type="checkbox" onchange="updateChecklistCount()" class="practice-chk w-5 h-5 accent-marun rounded" />
+                    <span class="text-sm font-medium text-gray-800">Perpindahan pola lantai sudah rapi dan tidak saling bersenggolan.</span>
+                  </label>
+                  <label class="flex items-center gap-3 bg-white p-3.5 rounded-2xl border border-emas/60 cursor-pointer hover:bg-krem transition">
+                    <input type="checkbox" onchange="updateChecklistCount()" class="practice-chk w-5 h-5 accent-marun rounded" />
+                    <span class="text-sm font-medium text-gray-800">Seluruh anggota kelompok bergerak kompak dan saling bekerja sama.</span>
+                  </label>
+                  <label class="flex items-center gap-3 bg-white p-3.5 rounded-2xl border border-emas/60 cursor-pointer hover:bg-krem transition">
+                    <input type="checkbox" onchange="updateChecklistCount()" class="practice-chk w-5 h-5 accent-marun rounded" />
+                    <span class="text-sm font-medium text-gray-800">Bagian gerakan yang sempat keliru sudah kami latih dan perbaiki bersama.</span>
+                  </label>
+                </div>
+              </div>
+
+              <div id="checklistFeedback" class="mt-4 bg-white/80 p-3 rounded-xl text-xs sm:text-sm font-semibold text-marun text-center">
+                Ayo centang setiap langkah yang sudah kelompokmu latih hari ini! 💪
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== MATERI 6 ==================== -->
+        <div id="bab-content-5" class="bab-content hidden space-y-6">
+          <div class="border-b-2 border-emas/40 pb-4">
+            <span class="text-xs font-bold uppercase tracking-wider text-emas-dark bg-emas-soft px-3 py-1 rounded-full">Materi 6 • Pertemuan 5</span>
+            <h3 class="text-2xl sm:text-3xl font-bold text-marun mt-2">Penampilan dan Apresiasi Kreasi Tari</h3>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Persiapan Sebelum Tampil -->
+            <div class="bg-krem rounded-3xl p-6 border-2 border-emas/60 space-y-3">
+              <div class="flex items-center gap-2.5">
+                <span class="text-3xl">🎭</span>
+                <h4 class="text-xl font-bold text-marun">Persiapan Sebelum Penampilan</h4>
+              </div>
+              <p class="text-sm text-gray-700">Pastikan 6 hal berikut sudah siap sebelum giliran kelompokmu tampil di depan kelas:</p>
+              <ul class="space-y-2 text-sm text-gray-800">
+                <li class="bg-white p-3 rounded-xl border border-emas/50">✔️ <strong>Kesiapan rangkaian gerakan:</strong> Semua anggota siap mulai dari gerakan pembuka hingga penutup.</li>
+                <li class="bg-white p-3 rounded-xl border border-emas/50">✔️ <strong>Musik pengiring:</strong> Musik instrumental Minangkabau siap diputar dengan volume yang jelas.</li>
+                <li class="bg-white p-3 rounded-xl border border-emas/50">✔️ <strong>Properti piring tiruan:</strong> Setiap penari sudah memegang piring plastik/karton dengan aman.</li>
+                <li class="bg-white p-3 rounded-xl border border-emas/50">✔️ <strong>Pola lantai:</strong> Posisi awal dan arah perpindahan sudah disepakati bersama.</li>
+                <li class="bg-white p-3 rounded-xl border border-emas/50">✔️ <strong>Kekompakan kelompok:</strong> Saling memberi semangat agar bergerak selaras.</li>
+                <li class="bg-white p-3 rounded-xl border border-emas/50">✔️ <strong>Keberanian & percaya diri:</strong> Tersenyum ceria dan tampil berani tanpa takut salah!</li>
+              </ul>
+            </div>
+
+            <!-- Sikap Apresiasi Terhadap Kelompok Lain -->
+            <div class="bg-gradient-to-br from-marun to-marun-dark text-white rounded-3xl p-6 border-4 border-emas space-y-4">
+              <div class="flex items-center gap-2.5">
+                <span class="text-3xl">👏</span>
+                <h4 class="text-xl font-bold text-emas-bright">Sikap Baik Saat Menonton Teman Tampil</h4>
+              </div>
+              <p class="text-sm text-krem leading-relaxed">
+                Setiap kelompok telah berlatih dengan sungguh-sungguh. Ketika kelompok lain tampil, tunjukkan sikap penonton yang santun:
+              </p>
+              <div class="space-y-3 text-sm">
+                <div class="bg-white/10 p-3.5 rounded-2xl border border-white/15 flex items-center gap-3">
+                  <span class="text-2xl">👀</span>
+                  <span><strong>Memperhatikan dengan tertib:</strong> Duduk tenang dan menyaksikan tarian teman dari awal hingga selesai.</span>
+                </div>
+                <div class="bg-white/10 p-3.5 rounded-2xl border border-white/15 flex items-center gap-3">
+                  <span class="text-2xl">🤝</span>
+                  <span><strong>Tidak mengejek atau menertawakan:</strong> Menghargai usaha teman meskipun ada gerakan yang masih perlu diperbaiki.</span>
+                </div>
+                <div class="bg-white/10 p-3.5 rounded-2xl border border-white/15 flex items-center gap-3">
+                  <span class="text-2xl">🌟</span>
+                  <span><strong>Memberikan apresiasi:</strong> Berikan tepuk tangan meriah setelah selesai dan sampaikan pujian atau masukan yang santun.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tombol Navigasi Bawah Materi (Sebelumnya / Berikutnya) -->
+        <div class="mt-8 pt-5 border-t-2 border-emas/40 flex flex-wrap items-center justify-between gap-3">
+          <button id="prevBabBtn" onclick="changeMateriBab(-1)" class="px-5 py-3 rounded-2xl bg-krem hover:bg-emas-soft text-marun font-bold border-2 border-emas flex items-center gap-2 transition cursor-pointer">
+            <span>←</span> Materi Sebelumnya
+          </button>
+
+          <span id="babIndicatorText" class="text-sm font-bold text-marun">Materi 1 dari 6</span>
+
+          <button id="nextBabBtn" onclick="changeMateriBab(1)" class="btn-3d-maroon px-6 py-3 rounded-2xl bg-marun hover:bg-marun-light text-white font-bold flex items-center gap-2 cursor-pointer">
+            <span>Materi Berikutnya</span> <span>→</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- 5. MENU VIDEO PEMBELAJARAN                                          -->
+    <!-- =================================================================== -->
+    <section id="page-video" class="page-section hidden space-y-6">
+      <div class="bg-white rounded-3xl p-6 sm:p-8 border-2 border-emas/60 shadow-minang space-y-6">
+        <div class="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <span class="inline-block px-3.5 py-1 rounded-full bg-emas-soft text-marun font-bold text-xs border border-emas mb-2">
+              🎬 Pengamatan Pertunjukan Tari (TP 1 & TP 2)
+            </span>
+            <h2 class="text-2xl sm:text-3xl font-bold text-marun">Video Pertunjukan Tari Piring Minangkabau</h2>
+            <p class="text-gray-600 text-sm sm:text-base mt-1">
+              Amati gerakan penari, irama musik pengiring, properti piring, kostum, dan pola lantai pada video berikut.
+            </p>
+          </div>
+          <span class="px-3.5 py-2 rounded-xl bg-amber-50 border border-amber-300 text-amber-900 text-xs font-semibold flex items-center gap-1.5">
+            <span>🌐</span> Membutuhkan koneksi internet
+          </span>
+        </div>
+
+        <!-- Area Pemutar Video YouTube -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <div class="lg:col-span-8 space-y-4">
+            <div class="aspect-video w-full rounded-3xl overflow-hidden bg-marun-dark border-4 border-emas shadow-lg">
+              <iframe
+                id="youtubePlayer"
+                class="w-full h-full"
+                src="https://www.youtube.com/embed/HScX3YKzbvY?rel=0"
+                title="Video Pertunjukan Tari Piring Minangkabau"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+              </iframe>
+            </div>
+
+            <!-- Info Video -->
+            <div class="bg-krem rounded-2xl p-4 border border-emas/60">
+              <h3 id="videoTitleDisplay" class="font-bold text-lg text-marun">Pertunjukan Tari Piring Tradisional Minangkabau</h3>
+              <p class="text-sm text-gray-700 mt-1">
+                Video referensi pembelajaran sesuai RPM Seni Tari Kelas V SD untuk mengamati kelincahan ayunan piring, ketukan musik tradisional Minang, kostum adat, dan perpindahan pola lantai kelompok.
+              </p>
+            </div>
+
+            <!-- Kolom Pengaturan Tautan YouTube untuk Guru -->
+            <div class="bg-emas-soft/70 rounded-2xl p-4 border border-emas">
+              <label for="customYoutubeInput" class="block text-xs sm:text-sm font-bold text-marun mb-1.5">
+                👩‍🏫 Kolom Guru: Ganti atau Masukkan Tautan Video YouTube Lain
+              </label>
+              <div class="flex flex-col sm:flex-row gap-2">
+                <input
+                  type="text"
+                  id="customYoutubeInput"
+                  placeholder="Tempel tautan YouTube di sini (contoh: https://youtu.be/HScX3YKzbvY)"
+                  class="flex-1 px-4 py-2.5 rounded-xl bg-white border-2 border-emas/60 text-sm focus:outline-none focus:border-marun"
+                />
+                <button onclick="updateYoutubeVideo()" class="px-5 py-2.5 rounded-xl bg-marun hover:bg-marun-light text-white font-bold text-sm transition cursor-pointer shrink-0">
+                  ▶️ Putar Video
+                </button>
+                <button onclick="resetYoutubeVideo()" class="px-4 py-2.5 rounded-xl bg-white hover:bg-krem text-marun font-bold text-sm border border-emas transition cursor-pointer shrink-0">
+                  Reset Default
+                </button>
+              </div>
+              <p id="videoStatusMsg" class="text-xs text-gray-600 mt-1.5">
+                Tautan aktif saat ini menggunakan video referensi Tari Piring dari RPM.
+              </p>
+            </div>
+          </div>
+
+          <!-- 5 Panduan Pertanyaan Pengamatan -->
+          <div class="lg:col-span-4 bg-gradient-to-b from-marun to-marun-dark text-white rounded-3xl p-6 border-4 border-emas flex flex-col justify-between">
+            <div>
+              <h3 class="text-xl font-bold text-emas-bright flex items-center gap-2 mb-2">
+                <span>🔍</span> Panduan Pengamatan Video
+              </h3>
+              <p class="text-xs text-krem/90 mb-4">
+                Perhatikan 5 hal berikut saat menonton video sebagai bahan diskusi kelompok dan pengerjaan LKPD dari guru:
+              </p>
+
+              <ol class="space-y-3 text-sm">
+                <li class="bg-white/10 p-3 rounded-2xl border border-white/15">
+                  <strong class="text-emas-bright block">1. Ciri Khas Gerakan:</strong>
+                  Bagaimana cara penari mengayunkan tangan dan melangkahkan kaki?
+                </li>
+                <li class="bg-white/10 p-3 rounded-2xl border border-white/15">
+                  <strong class="text-emas-bright block">2. Musik Pengiring:</strong>
+                  Bagaimana irama musiknya (cepat/lambat) dan apakah gerakan sesuai ketukan?
+                </li>
+                <li class="bg-white/10 p-3 rounded-2xl border border-white/15">
+                  <strong class="text-emas-bright block">3. Penggunaan Properti Piring:</strong>
+                  Bagaimana posisi telapak tangan penari memegang piring agar tidak jatuh?
+                </li>
+                <li class="bg-white/10 p-3 rounded-2xl border border-white/15">
+                  <strong class="text-emas-bright block">4. Kostum Penari:</strong>
+                  Apa warna pakaian dan hiasan kepala yang dipakai para penari?
+                </li>
+                <li class="bg-white/10 p-3 rounded-2xl border border-white/15">
+                  <strong class="text-emas-bright block">5. Pola Lantai:</strong>
+                  Formasi garis atau lengkung apa saja yang dibentuk oleh para penari?
+                </li>
+              </ol>
+            </div>
+
+            <div class="mt-5 pt-4 border-t border-white/20 text-xs text-emas-bright text-center">
+              📝 Catat hasil pengamatanmu pada LKPD yang dibagikan guru ya!
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- 6. MENU MUSIK PENGIRING                                             -->
+    <!-- =================================================================== -->
+    <section id="page-musik" class="page-section hidden space-y-6">
+      <div class="bg-white rounded-3xl p-6 sm:p-8 border-2 border-emas/60 shadow-minang space-y-6">
+        <div>
+          <span class="inline-block px-3.5 py-1 rounded-full bg-emas-soft text-marun font-bold text-xs border border-emas mb-2">
+            🎶 Iringan Eksplorasi & Latihan Tari (TP 4 & TP 5)
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-marun">Musik Pengiring Bernuansa Minangkabau</h2>
+          <p class="text-gray-600 text-sm sm:text-base mt-1">
+            Gunakan pemutar musik di bawah ini saat melakukan eksplorasi gerak, menyusun rangkaian tari, latihan kelompok, hingga penampilan!
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <!-- PEMUTAR 1: SIMULATOR IRAMA TALEMPONG & GANDANG OFFLINE (TANPA INTERNET) -->
+          <div class="lg:col-span-6 bg-gradient-to-br from-marun via-marun-dark to-[#450C11] text-white rounded-3xl p-6 border-4 border-emas-bright shadow-lg flex flex-col justify-between space-y-5">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="px-3 py-1 rounded-full bg-emerald-500 text-white text-xs font-bold">
+                  ✅ Berfungsi Tanpa Internet (Offline)
+                </span>
+                <span class="text-xs text-emas-bright font-semibold">Irama 8 Hitungan</span>
+              </div>
+
+              <h3 class="text-2xl font-bold text-emas-bright">Irama Talempong & Gandang Latihan</h3>
+              <p class="text-sm text-krem/90 mt-1">
+                Simulasi ketukan musik tradisional Minangkabau dengan 8 hitungan jelas untuk membantu murid menyelaraskan langkah kaki dan ayunan piring.
+              </p>
+
+              <!-- Visualisasi 8 Ketukan Irama -->
+              <div class="mt-5 bg-black/25 rounded-2xl p-4 border border-emas/40">
+                <div class="flex items-center justify-between text-xs text-emas-bright font-bold mb-2">
+                  <span>HITUNGAN KETUKAN TARI:</span>
+                  <span id="tempoLabel">Tempo: Sedang (105 BPM)</span>
+                </div>
+                <div class="grid grid-cols-8 gap-1.5" id="beatIndicators">
+                  <div class="beat-box h-12 rounded-xl bg-white/15 flex items-center justify-center font-judul font-bold text-lg border border-white/20">1</div>
+                  <div class="beat-box h-12 rounded-xl bg-white/15 flex items-center justify-center font-judul font-bold text-lg border border-white/20">2</div>
+                  <div class="beat-box h-12 rounded-xl bg-white/15 flex items-center justify-center font-judul font-bold text-lg border border-white/20">3</div>
+                  <div class="beat-box h-12 rounded-xl bg-white/15 flex items-center justify-center font-judul font-bold text-lg border border-white/20">4</div>
+                  <div class="beat-box h-12 rounded-xl bg-white/15 flex items-center justify-center font-judul font-bold text-lg border border-white/20">5</div>
+                  <div class="beat-box h-12 rounded-xl bg-white/15 flex items-center justify-center font-judul font-bold text-lg border border-white/20">6</div>
+                  <div class="beat-box h-12 rounded-xl bg-white/15 flex items-center justify-center font-judul font-bold text-lg border border-white/20">7</div>
+                  <div class="beat-box h-12 rounded-xl bg-white/15 flex items-center justify-center font-judul font-bold text-lg border border-white/20">8</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Kontrol Play/Pause, Tempo, dan Volume -->
+            <div class="space-y-4">
+              <div class="flex flex-wrap items-center gap-3">
+                <button id="offlineMusicBtn" onclick="toggleOfflineMusic()" class="btn-3d-gold flex-1 bg-emas-bright hover:bg-yellow-300 text-marun-dark font-judul font-bold text-lg py-3.5 px-5 rounded-2xl flex items-center justify-center gap-2 cursor-pointer">
+                  <span id="offlineMusicIcon">▶️</span>
+                  <span id="offlineMusicText">Putar Musik Irama</span>
+                </button>
+              </div>
+
+              <!-- Pilihan Kecepatan Latihan -->
+              <div class="grid grid-cols-3 gap-2">
+                <button onclick="setOfflineTempo(85, 'Lambat (85 BPM)')" id="tempo-85" class="tempo-btn py-2 px-3 rounded-xl text-xs font-bold bg-white/15 hover:bg-white/25 border border-white/20 cursor-pointer">
+                  🐢 Lambat (Latihan)
+                </button>
+                <button onclick="setOfflineTempo(105, 'Sedang (105 BPM)')" id="tempo-105" class="tempo-btn py-2 px-3 rounded-xl text-xs font-bold bg-emas-bright text-marun-dark border border-emas-bright cursor-pointer">
+                  🚶 Sedang (Normal)
+                </button>
+                <button onclick="setOfflineTempo(125, 'Cepat (125 BPM)')" id="tempo-125" class="tempo-btn py-2 px-3 rounded-xl text-xs font-bold bg-white/15 hover:bg-white/25 border border-white/20 cursor-pointer">
+                  ⚡ Cepat (Semangat)
+                </button>
+              </div>
+
+              <!-- Pengatur Volume -->
+              <div class="bg-white/10 rounded-2xl p-3.5 flex items-center gap-3">
+                <span class="text-lg">🔊</span>
+                <label for="offlineVolume" class="text-xs font-bold shrink-0">Volume:</label>
+                <input type="range" id="offlineVolume" min="0" max="100" value="75" oninput="updateOfflineVolume(this.value)" class="w-full accent-emas-bright cursor-pointer" />
+                <span id="volumePercent" class="text-xs font-bold w-9 text-right">75%</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- PEMUTAR 2: MUSIK INSTRUMENTAL MINANGKABAU DARI TAUTAN RPM / GURU -->
+          <div class="lg:col-span-6 bg-krem rounded-3xl p-6 border-2 border-emas flex flex-col justify-between space-y-4">
+            <div class="space-y-3">
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <span class="px-3 py-1 rounded-full bg-marun text-emas-bright text-xs font-bold">
+                  🎼 Musik Instrumental RPM
+                </span>
+                <span class="px-2.5 py-1 rounded-lg bg-amber-100 text-amber-900 text-xs font-semibold">
+                  🌐 Membutuhkan internet
+                </span>
+              </div>
+
+              <h3 class="text-xl sm:text-2xl font-bold text-marun">Musik Instrumental Tradisional Minangkabau</h3>
+              <p class="text-sm text-gray-700">
+                Pemutar musik pengiring yang terhubung langsung dengan tautan musik instrumental pada dokumen RPM.
+              </p>
+
+              <!-- Pemutar Embed / Audio -->
+              <div id="externalMusicContainer" class="rounded-2xl overflow-hidden border-2 border-emas bg-black aspect-video max-h-56 w-full">
+                <iframe
+                  id="musicYoutubeIframe"
+                  class="w-full h-full"
+                  src="https://www.youtube.com/embed/QjLWQe9HC8M?rel=0"
+                  title="Musik Instrumental Bernuansa Tradisional Minangkabau"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen>
+                </iframe>
+              </div>
+
+              <!-- Audio HTML5 tersembunyi jika guru memasukkan file MP3 langsung -->
+              <div id="directAudioWrapper" class="hidden bg-white p-4 rounded-2xl border-2 border-emas space-y-2">
+                <p class="text-xs font-bold text-marun">🎵 Pemutar Audio Langsung (MP3/WAV):</p>
+                <audio id="directAudioPlayer" controls class="w-full"></audio>
+              </div>
+            </div>
+
+            <!-- Kolom Guru Ganti Tautan Musik -->
+            <div class="bg-white rounded-2xl p-4 border border-emas/80 space-y-2">
+              <label for="customMusicInput" class="block text-xs font-bold text-marun">
+                👩‍🏫 Kolom Guru: Ganti Tautan Musik (YouTube atau Link MP3)
+              </label>
+              <div class="flex flex-col sm:flex-row gap-2">
+                <input
+                  type="text"
+                  id="customMusicInput"
+                  placeholder="Tempel tautan YouTube atau URL file .mp3..."
+                  class="flex-1 px-3.5 py-2 rounded-xl bg-krem border border-emas text-sm focus:outline-none focus:border-marun"
+                />
+                <button onclick="updateCustomMusic()" class="px-4 py-2 rounded-xl bg-marun hover:bg-marun-light text-white font-bold text-xs sm:text-sm cursor-pointer shrink-0">
+                  Muat Musik
+                </button>
+                <button onclick="resetCustomMusic()" class="px-3 py-2 rounded-xl bg-emas-soft hover:bg-emas/40 text-marun font-bold text-xs cursor-pointer shrink-0">
+                  Default
+                </button>
+              </div>
+              <p id="musicStatusText" class="text-xs text-gray-600">
+                Memuat tautan musik instrumental Minangkabau sesuai RPM.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- 7. MENU KUIS INTERAKTIF (10 SOAL PILIHAN GANDA)                     -->
+    <!-- =================================================================== -->
+    <section id="page-kuis" class="page-section hidden space-y-6">
+      <div class="max-w-3xl mx-auto bg-white rounded-3xl p-6 sm:p-8 border-2 border-emas shadow-minang">
+        <!-- Header Kuis -->
+        <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b-2 border-emas/40">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-emas-dark bg-emas-soft px-3 py-1 rounded-full">
+              🏆 Evaluasi Pemahaman Materi
+            </span>
+            <h2 class="text-2xl sm:text-3xl font-bold text-marun mt-1.5">Kuis Seru Tari Piring!</h2>
+          </div>
+          <div id="quizProgressBadge" class="px-4 py-2 rounded-2xl bg-marun text-emas-bright font-judul font-bold text-sm">
+            Soal 1 / 10
+          </div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="w-full h-3 bg-krem rounded-full overflow-hidden my-5 border border-emas/50">
+          <div id="quizProgressBar" class="h-full bg-gradient-to-r from-marun to-emas-bright transition-all duration-300" style="width: 10%;"></div>
+        </div>
+
+        <!-- Area Soal Aktif -->
+        <div id="quizQuestionArea" class="space-y-5">
+          <div class="bg-krem rounded-2xl p-5 border-2 border-emas/60">
+            <p id="quizQuestionText" class="text-lg sm:text-xl font-bold text-marun-dark leading-relaxed">
+              Memuat pertanyaan...
+            </p>
+          </div>
+
+          <!-- Pilihan Jawaban A, B, C, D -->
+          <div id="quizOptionsContainer" class="space-y-3">
+            <!-- Diisi otomatis oleh JavaScript -->
+          </div>
+
+          <!-- Kotak Umpan Balik & Penjelasan -->
+          <div id="quizFeedbackBox" class="hidden rounded-2xl p-4 border-2 space-y-1">
+            <p id="quizFeedbackTitle" class="font-bold text-base"></p>
+            <p id="quizFeedbackExplanation" class="text-sm leading-relaxed"></p>
+          </div>
+
+          <!-- Tombol Lanjut -->
+          <div class="flex justify-end pt-2">
+            <button id="quizNextBtn" onclick="nextQuizQuestion()" class="hidden btn-3d-maroon bg-marun hover:bg-marun-light text-white font-judul font-bold text-base sm:text-lg px-7 py-3.5 rounded-2xl flex items-center gap-2 cursor-pointer">
+              <span id="quizNextBtnText">Soal Berikutnya</span> <span>→</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Area Hasil Akhir Kuis -->
+        <div id="quizResultArea" class="hidden text-center py-6 space-y-5">
+          <div id="quizStarsDisplay" class="text-4xl sm:text-5xl">⭐⭐⭐</div>
+          <div>
+            <p class="text-sm font-bold uppercase tracking-wider text-emas-dark">Skor Akhir Kamu</p>
+            <div id="quizFinalScore" class="font-judul text-6xl sm:text-7xl font-bold text-marun my-1">100</div>
+            <p id="quizCorrectSummary" class="text-base font-semibold text-gray-700">Benar 10 dari 10 soal</p>
+          </div>
+
+          <div id="quizFinalMessage" class="max-w-lg mx-auto bg-emas-soft border-2 border-emas rounded-2xl p-4 text-marun-dark font-medium text-sm sm:text-base">
+            Hebat sekali! Kamu sudah memahami materi Tari Piring Minangkabau dengan sangat baik.
+          </div>
+
+          <div class="flex flex-wrap justify-center gap-3 pt-2">
+            <button onclick="restartQuiz()" class="btn-3d-gold bg-emas-bright hover:bg-yellow-300 text-marun-dark font-judul font-bold text-lg px-7 py-3.5 rounded-2xl flex items-center gap-2 cursor-pointer">
+              <span>🔄</span> <span>Ulangi Kuis</span>
+            </button>
+            <button onclick="navigateTo('refleksi')" class="px-6 py-3.5 rounded-2xl bg-marun hover:bg-marun-light text-white font-judul font-bold text-lg transition cursor-pointer">
+              Lanjut ke Refleksi →
+            </button>
+          </div>
+        </div>
+
+        <p class="text-xs text-gray-500 text-center mt-6 pt-4 border-t border-gray-200">
+          Kuis ini berfungsi untuk memperkuat pemahaman materi, bukan sebagai pengganti LKPD maupun penilaian praktik tari.
+        </p>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- 8. MENU REFLEKSI PEMBELAJARAN                                       -->
+    <!-- =================================================================== -->
+    <section id="page-refleksi" class="page-section hidden space-y-6">
+      <div class="max-w-4xl mx-auto bg-white rounded-3xl p-6 sm:p-8 border-2 border-emas shadow-minang space-y-6">
+        <div class="border-b-2 border-emas/40 pb-4">
+          <span class="inline-block px-3.5 py-1 rounded-full bg-emas-soft text-marun font-bold text-xs border border-emas mb-2">
+            💭 Evaluasi Pengalaman Belajar
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-marun">Refleksi Pembelajaran</h2>
+          <p class="text-gray-600 text-sm sm:text-base mt-1">
+            Bagaimana pengalamanmu selama mengenal Tari Piring dan berkreasi gerak bersama teman? Pilih perasaanmu dan renungkan pertanyaan berikut!
+          </p>
+        </div>
+
+        <!-- Pilihan Emotikon Perasaan -->
+        <div class="bg-krem rounded-3xl p-5 border-2 border-emas/60 space-y-4">
+          <h3 class="font-bold text-lg text-marun">1. Pilih Emotikon yang Menggambarkan Perasaanmu Hari Ini:</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <button onclick="selectReflectionMood('senang')" id="mood-senang" class="mood-btn p-4 rounded-2xl bg-white border-2 border-emas/50 hover:border-marun text-left transition cursor-pointer flex items-center gap-3">
+              <span class="text-4xl">😊</span>
+              <span class="text-sm font-bold text-gray-800">Senang dan memahami pembelajaran.</span>
+            </button>
+
+            <button onclick="selectReflectionMood('cukup')" id="mood-cukup" class="mood-btn p-4 rounded-2xl bg-white border-2 border-emas/50 hover:border-marun text-left transition cursor-pointer flex items-center gap-3">
+              <span class="text-4xl">😐</span>
+              <span class="text-sm font-bold text-gray-800">Cukup senang, tetapi masih ada hal yang belum dipahami.</span>
+            </button>
+
+            <button onclick="selectReflectionMood('sulit')" id="mood-sulit" class="mood-btn p-4 rounded-2xl bg-white border-2 border-emas/50 hover:border-marun text-left transition cursor-pointer flex items-center gap-3">
+              <span class="text-4xl">😟</span>
+              <span class="text-sm font-bold text-gray-800">Masih mengalami kesulitan dan membutuhkan bantuan.</span>
+            </button>
+          </div>
+
+          <div id="moodResponseBox" class="hidden bg-emas-soft border-l-4 border-marun p-4 rounded-xl text-sm text-marun-dark font-medium"></div>
+        </div>
+
+        <!-- 6 Pertanyaan Refleksi Sesuai RPM -->
+        <div class="space-y-4">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <h3 class="font-bold text-lg text-marun">2. Pertanyaan Refleksi Diri:</h3>
+            <span class="text-xs text-gray-500">Catatan ini hanya tersimpan di perangkatmu untuk diceritakan di kelas (tidak dikirim ke server).</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-krem p-4 rounded-2xl border border-emas/60 space-y-2">
+              <label class="block text-sm font-bold text-marun">1. Apa hal baru yang kalian pelajari tentang Tari Piring?</label>
+              <textarea rows="2" placeholder="Tuliskan catatan singkatmu di sini untuk diceritakan ke guru/teman..." class="refleksi-input w-full p-3 rounded-xl bg-white border border-emas/60 text-sm focus:outline-none focus:border-marun"></textarea>
+            </div>
+
+            <div class="bg-krem p-4 rounded-2xl border border-emas/60 space-y-2">
+              <label class="block text-sm font-bold text-marun">2. Gerakan tari apa yang paling kalian sukai?</label>
+              <textarea rows="2" placeholder="Contoh: Gerakan mengayun piring atau gerakan burung terbang..." class="refleksi-input w-full p-3 rounded-xl bg-white border border-emas/60 text-sm focus:outline-none focus:border-marun"></textarea>
+            </div>
+
+            <div class="bg-krem p-4 rounded-2xl border border-emas/60 space-y-2">
+              <label class="block text-sm font-bold text-marun">3. Apakah kalian sudah bisa menyusun gerakan tari bersama kelompok?</label>
+              <textarea rows="2" placeholder="Ceritakan pengalamanmu menyusun gerak pembuka, inti, penghubung, dan penutup..." class="refleksi-input w-full p-3 rounded-xl bg-white border border-emas/60 text-sm focus:outline-none focus:border-marun"></textarea>
+            </div>
+
+            <div class="bg-krem p-4 rounded-2xl border border-emas/60 space-y-2">
+              <label class="block text-sm font-bold text-marun">4. Bagaimana perasaan kalian ketika bekerja sama dan berlatih dengan teman?</label>
+              <textarea rows="2" placeholder="Tuliskan perasaanmu saat berdiskusi dan berlatih kompak..." class="refleksi-input w-full p-3 rounded-xl bg-white border border-emas/60 text-sm focus:outline-none focus:border-marun"></textarea>
+            </div>
+
+            <div class="bg-krem p-4 rounded-2xl border border-emas/60 space-y-2">
+              <label class="block text-sm font-bold text-marun">5. Kesulitan apa yang kalian alami selama membuat dan menampilkan kreasi tari?</label>
+              <textarea rows="2" placeholder="Misalnya saat menyesuaikan ketukan musik atau berpindah pola lantai..." class="refleksi-input w-full p-3 rounded-xl bg-white border border-emas/60 text-sm focus:outline-none focus:border-marun"></textarea>
+            </div>
+
+            <div class="bg-krem p-4 rounded-2xl border border-emas/60 space-y-2">
+              <label class="block text-sm font-bold text-marun">6. Apa yang ingin kalian perbaiki jika mendapat kesempatan membuat tarian lagi?</label>
+              <textarea rows="2" placeholder="Tuliskan harapan atau rencana perbaikanmu..." class="refleksi-input w-full p-3 rounded-xl bg-white border border-emas/60 text-sm focus:outline-none focus:border-marun"></textarea>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap items-center justify-between gap-3 pt-2">
+            <button onclick="clearReflectionNotes()" class="px-4 py-2.5 rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold text-sm transition cursor-pointer">
+              Bersihkan Catatan
+            </button>
+            <button onclick="showReflectionReadyBanner()" class="btn-3d-maroon px-6 py-3 rounded-2xl bg-marun hover:bg-marun-light text-white font-judul font-bold text-base cursor-pointer">
+              🌟 Siap Ceritakan Refleksiku!
+            </button>
+          </div>
+
+          <div id="reflectionReadyBanner" class="hidden bg-emerald-50 border-2 border-emerald-500 text-emerald-900 p-4 rounded-2xl text-sm font-semibold text-center">
+            🎉 Hebat! Catatan refleksimu sudah siap. Silakan sampaikan secara lisan saat guru mempersilakan di kelas ya!
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================================================================== -->
+  <!-- FOOTER BERNUANSA MINANGKABAU                                          -->
+  <!-- ===================================================================== -->
+  <footer class="bg-marun-dark text-white mt-12">
+    <div class="songket-border"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+      <div>
+        <p class="font-judul text-lg font-bold text-emas-bright">AYO BERKREASI TARI! — Seni Tari Kelas V SD</p>
+        <p class="text-xs sm:text-sm text-krem/85">
+          Topik: Eksplorasi dan Kreasi Gerak Tari Terinspirasi dari Tari Piring Minangkabau • Fase C / Semester I
+        </p>
+      </div>
+      <div class="text-xs sm:text-sm text-krem/90 sm:text-right">
+        <p>Disusun oleh: <strong class="text-emas-bright">Srianti</strong></p>
+        <p class="text-xs text-krem/70 mt-0.5">Bergerak, Berkarya, Melestarikan Budaya Minangkabau</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===================================================================== -->
+  <!-- JAVASCRIPT INTERAKTIF LENGKAP                                         -->
+  <!-- ===================================================================== -->
+  <script>
+    // =========================================================================
+    // 1. NAVIGASI HALAMAN UTAMA
+    // =========================================================================
+    let currentPage = 'beranda';
+
+    function navigateTo(pageId) {
+      currentPage = pageId;
+
+      // Sembunyikan semua section
+      document.querySelectorAll('.page-section').forEach(sec => {
+        sec.classList.add('hidden');
+      });
+
+      // Tampilkan section tujuan
+      const target = document.getElementById('page-' + pageId);
+      if (target) {
+        target.classList.remove('hidden');
+      }
+
+      // Perbarui status aktif tombol navigasi desktop & mobile
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        if (btn.dataset.nav === pageId) {
+          btn.classList.add('bg-emas-bright', 'text-marun-dark', 'shadow');
+          btn.classList.remove('text-white', 'hover:bg-white/15');
+        } else {
+          btn.classList.remove('bg-emas-bright', 'text-marun-dark', 'shadow');
+          btn.classList.add('text-white', 'hover:bg-white/15');
+        }
+      });
+
+      document.querySelectorAll('.nav-btn-mob').forEach(btn => {
+        if (btn.dataset.nav === pageId) {
+          btn.classList.add('bg-emas-bright', 'text-marun-dark');
+          btn.classList.remove('bg-white/10', 'text-white');
+        } else {
+          btn.classList.remove('bg-emas-bright', 'text-marun-dark');
+          btn.classList.add('bg-white/10', 'text-white');
+        }
+      });
+
+      // Tutup menu mobile setelah klik
+      document.getElementById('mobileNav').classList.add('hidden');
+
+      // Scroll ke atas dengan halus
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function toggleMobileMenu() {
+      const mobileNav = document.getElementById('mobileNav');
+      mobileNav.classList.toggle('hidden');
+    }
+
+    // =========================================================================
+    // 2. LOGIKA MATERI PEMBELAJARAN (6 SUBBAB)
+    // =========================================================================
+    let currentBab = 0;
+    const totalBab = 6;
+    const babPertemuanMap = [
+      'Mendukung Pertemuan 1',
+      'Mendukung Pertemuan 1 & 2',
+      'Mendukung Pertemuan 2',
+      'Mendukung Pertemuan 3',
+      'Mendukung Pertemuan 4',
+      'Mendukung Pertemuan 5'
+    ];
+
+    function setMateriBab(index) {
+      if (index < 0 || index >= totalBab) return;
+      currentBab = index;
+
+      // Tampilkan konten bab yang dipilih
+      for (let i = 0; i < totalBab; i++) {
+        const content = document.getElementById('bab-content-' + i);
+        const tab = document.getElementById('tab-bab-' + i);
+        if (i === index) {
+          content.classList.remove('hidden');
+          tab.classList.add('bg-marun', 'text-emas-bright', 'border-marun', 'shadow');
+          tab.classList.remove('bg-krem', 'text-marun', 'border-emas/50', 'hover:bg-emas-soft');
+        } else {
+          content.classList.add('hidden');
+          tab.classList.remove('bg-marun', 'text-emas-bright', 'border-marun', 'shadow');
+          tab.classList.add('bg-krem', 'text-marun', 'border-emas/50', 'hover:bg-emas-soft');
+        }
+      }
+
+      // Update indikator bawah & badge pertemuan
+      document.getElementById('babIndicatorText').textContent = `Materi ${index + 1} dari ${totalBab}`;
+      document.getElementById('materiPertemuanBadge').textContent = babPertemuanMap[index];
+
+      const prevBtn = document.getElementById('prevBabBtn');
+      const nextBtn = document.getElementById('nextBabBtn');
+      prevBtn.disabled = index === 0;
+      prevBtn.classList.toggle('opacity-40', index === 0);
+
+      if (index === totalBab - 1) {
+        nextBtn.innerHTML = '<span>Lanjut ke Video</span> <span>🎬</span>';
+        nextBtn.onclick = () => navigateTo('video');
+      } else {
+        nextBtn.innerHTML = '<span>Materi Berikutnya</span> <span>→</span>';
+        nextBtn.onclick = () => changeMateriBab(1);
+      }
+    }
+
+    function changeMateriBab(step) {
+      setMateriBab(currentBab + step);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function openMateriBab(index) {
+      navigateTo('materi');
+      setMateriBab(index);
+    }
+
+    // =========================================================================
+    // 3. INTERAKTIF POLA LANTAI (MATERI 2D)
+    // =========================================================================
+    const polaLantaiData = {
+      lurus: {
+        coords: [[70, 95], [135, 95], [200, 95], [265, 95], [330, 95]],
+        line: { x1: 60, y1: 95, x2: 340, y2: 95 },
+        curve: '',
+        desc: 'Pola Lantai Garis Lurus: Penari berbaris lurus ke samping (horizontal) atau ke belakang (vertikal). Memberikan kesan rapi, kompak, dan kuat.'
+      },
+      diagonal: {
+        coords: [[85, 145], [142, 120], [200, 95], [258, 70], [315, 45]],
+        line: { x1: 75, y1: 150, x2: 325, y2: 40 },
+        curve: '',
+        desc: 'Pola Lantai Garis Diagonal: Penari berbaris membentuk garis menyerong dari sudut kanan ke sudut kiri panggung. Memberikan kesan dinamis dan lincah.'
+      },
+      lingkaran: {
+        coords: [[200, 35], [275, 78], [248, 152], [152, 152], [125, 78]],
+        line: { x1: 0, y1: 0, x2: 0, y2: 0 },
+        curve: 'M 200,35 A 75,65 0 1,1 199.9,35 Z',
+        desc: 'Pola Lantai Lingkaran: Penari membentuk formasi melingkar penuh. Memberikan kesan kebersamaan, keakraban, dan persatuan kelompok.'
+      },
+      setengah: {
+        coords: [[80, 125], [130, 72], [200, 52], [270, 72], [320, 125]],
+        line: { x1: 0, y1: 0, x2: 0, y2: 0 },
+        curve: 'M 80,125 Q 200,15 320,125',
+        desc: 'Pola Lantai Setengah Lingkaran: Penari membentuk garis lengkung terbuka menghadap penonton. Memudahkan semua penari terlihat jelas dari depan.'
+      }
+    };
+
+    function selectPolaLantai(type) {
+      const data = polaLantaiData[type];
+      if (!data) return;
+
+      // Update gaya tombol
+      ['lurus', 'diagonal', 'lingkaran', 'setengah'].forEach(key => {
+        const btn = document.getElementById('btn-pola-' + key);
+        if (key === type) {
+          btn.classList.add('bg-marun', 'text-emas-bright', 'border-marun', 'shadow');
+          btn.classList.remove('bg-white', 'text-marun', 'border-emas/60');
+        } else {
+          btn.classList.remove('bg-marun', 'text-emas-bright', 'border-marun', 'shadow');
+          btn.classList.add('bg-white', 'text-marun', 'border-emas/60');
+        }
+      });
+
+      // Pindahkan 5 titik penari SVG
+      data.coords.forEach((pt, idx) => {
+        const el = document.getElementById('dancer-dot-' + (idx + 1));
+        if (el) {
+          el.setAttribute('transform', `translate(${pt[0]}, ${pt[1]})`);
+        }
+      });
+
+      // Atur garis bantu
+      const guideLine = document.getElementById('polaGuideLine');
+      guideLine.setAttribute('x1', data.line.x1);
+      guideLine.setAttribute('y1', data.line.y1);
+      guideLine.setAttribute('x2', data.line.x2);
+      guideLine.setAttribute('y2', data.line.y2);
+
+      document.getElementById('polaGuideCurve').setAttribute('d', data.curve);
+      document.getElementById('polaLantaiDesc').innerHTML = `<strong>${data.desc.split(':')[0]}:</strong>${data.desc.split(':')[1]}`;
+    }
+
+    // =========================================================================
+    // 4. INTERAKTIF EKSPLORASI GERAK (MATERI 3)
+    // =========================================================================
+    const eksplorasiData = {
+      panen: {
+        title: 'Inspirasi 1: Gerakan Memanen Padi',
+        caption: 'Ilustrasi Gerak Inspirasi Memanen',
+        desc: 'Bayangkan gerakan masyarakat Minangkabau saat memanen padi di sawah dengan hati gembira dan penuh rasa syukur.',
+        tangan: 'Tangan kanan mengayun menyabit ke depan, tangan kiri memegang piring tiruan sejajar dada.',
+        kaki: 'Melangkah maju-mundur pelan sambil menekuk lutut sedikit (merendah).',
+        badan: 'Badan condong ringan ke depan lalu tegak kembali dengan senyum ceria.',
+        svg: `
+          <circle cx="130" cy="100" r="80" fill="#FDF6DF"/>
+          <path d="M40 155Q70 120 90 155M55 155Q85 125 105 155" stroke="#D4AF37" stroke-width="3" fill="none"/>
+          <circle cx="135" cy="48" r="18" fill="#FCD5B5"/>
+          <path d="M115 44C118 28 152 28 155 44Z" fill="#F3C623"/>
+          <path d="M115 74L155 74L162 132H108Z" fill="#7B1E26"/>
+          <path d="M115 80L78 105" stroke="#7B1E26" stroke-width="10" stroke-linecap="round"/>
+          <path d="M155 80L192 92" stroke="#7B1E26" stroke-width="10" stroke-linecap="round"/>
+          <ellipse cx="75" cy="99" rx="16" ry="5" fill="#FFF" stroke="#7B1E26" stroke-width="2"/>
+          <ellipse cx="195" cy="86" rx="16" ry="5" fill="#FFF" stroke="#7B1E26" stroke-width="2"/>
+          <path d="M120 132L110 172M150 132L162 172" stroke="#581218" stroke-width="10" stroke-linecap="round"/>
+        `
+      },
+      burung: {
+        title: 'Inspirasi 2: Gerakan Burung Terbang',
+        caption: 'Ilustrasi Gerak Inspirasi Burung Terbang',
+        desc: 'Terinspirasi dari burung yang mengepakkan sayapnya dengan ringan dan indah di langit Ranah Minang.',
+        tangan: 'Kedua tangan direntangkan ke samping dan diayunkan naik-turun secara lembut sambil menjaga piring tetap datar.',
+        kaki: 'Berjalan jinjit ringan atau melangkah menyilang ke kanan dan ke kiri.',
+        badan: 'Badan tegak luwes dan sedikit miring mengikuti arah ayunan tangan.',
+        svg: `
+          <circle cx="130" cy="100" r="80" fill="#FDF6DF"/>
+          <path d="M35 55Q55 40 70 55Q85 40 105 55" stroke="#D4AF37" stroke-width="3" fill="none"/>
+          <circle cx="130" cy="46" r="18" fill="#FCD5B5"/>
+          <path d="M110 42C113 26 147 26 150 42Z" fill="#F3C623"/>
+          <path d="M110 72L150 72L156 130H104Z" fill="#9E2A34"/>
+          <path d="M110 78L55 58" stroke="#9E2A34" stroke-width="10" stroke-linecap="round"/>
+          <path d="M150 78L205 58" stroke="#9E2A34" stroke-width="10" stroke-linecap="round"/>
+          <ellipse cx="52" cy="51" rx="17" ry="5.5" fill="#FFF" stroke="#7B1E26" stroke-width="2"/>
+          <ellipse cx="208" cy="51" rx="17" ry="5.5" fill="#FFF" stroke="#7B1E26" stroke-width="2"/>
+          <path d="M118 130L115 174M142 130L148 174" stroke="#581218" stroke-width="10" stroke-linecap="round"/>
+        `
+      },
+      angin: {
+        title: 'Inspirasi 3: Gerakan Angin Bertiup',
+        caption: 'Ilustrasi Gerak Inspirasi Angin Bertiup',
+        desc: 'Terinspirasi dari pepohonan dan rumpun bambu yang melambai-lambai lembut saat tertiup angin sepoi-sepoi.',
+        tangan: 'Kedua tangan diangkat ke atas kepala lalu digerakkan melambai ke kiri dan ke kanan secara bergantian.',
+        kaki: 'Kaki membuka selebar bahu, berat badan dipindahkan dari kaki kanan ke kaki kiri.',
+        badan: 'Badan meliuk lembut ke samping kiri dan kanan mengikuti alunan musik.',
+        svg: `
+          <circle cx="130" cy="100" r="80" fill="#FDF6DF"/>
+          <path d="M30 85C65 75 95 95 130 85M150 115C185 105 210 120 235 110" stroke="#D4AF37" stroke-width="2.5" stroke-dasharray="5 5" fill="none"/>
+          <circle cx="138" cy="48" r="18" fill="#FCD5B5"/>
+          <path d="M118 44C121 28 155 28 158 44Z" fill="#F3C623"/>
+          <path d="M114 72L154 72L156 130H104Z" fill="#7B1E26"/>
+          <path d="M116 76L95 36" stroke="#7B1E26" stroke-width="10" stroke-linecap="round"/>
+          <path d="M152 76L182 42" stroke="#7B1E26" stroke-width="10" stroke-linecap="round"/>
+          <ellipse cx="94" cy="29" rx="16" ry="5" fill="#FFF" stroke="#7B1E26" stroke-width="2"/>
+          <ellipse cx="184" cy="35" rx="16" ry="5" fill="#FFF" stroke="#7B1E26" stroke-width="2"/>
+          <path d="M115 130L105 172M145 130L155 172" stroke="#581218" stroke-width="10" stroke-linecap="round"/>
+        `
+      },
+      bawa: {
+        title: 'Inspirasi 4: Gerakan Mengambil & Membawa Benda',
+        caption: 'Ilustrasi Gerak Inspirasi Membawa Hidangan',
+        desc: 'Terinspirasi dari kebiasaan masyarakat Minangkabau yang ramah saat membawa dan menyajikan hidangan piring kepada tamu.',
+        tangan: 'Satu tangan menyodorkan piring ke depan sejajar pinggang, tangan lainnya ditekuk anggun di samping badan.',
+        kaki: 'Melangkah ke depan dua langkah lalu memutar badan setengah lingkaran dengan mantap.',
+        badan: 'Badan tegak ramah dengan pandangan mata tertuju ke arah piring atau penonton.',
+        svg: `
+          <circle cx="130" cy="100" r="80" fill="#FDF6DF"/>
+          <circle cx="130" cy="46" r="18" fill="#FCD5B5"/>
+          <path d="M110 42C113 26 147 26 150 42Z" fill="#F3C623"/>
+          <path d="M110 72L150 72L156 130H104Z" fill="#9E2A34"/>
+          <path d="M110 78L72 95" stroke="#9E2A34" stroke-width="10" stroke-linecap="round"/>
+          <path d="M150 78L178 106" stroke="#9E2A34" stroke-width="10" stroke-linecap="round"/>
+          <ellipse cx="68" cy="88" rx="17" ry="5.5" fill="#FFF" stroke="#7B1E26" stroke-width="2"/>
+          <ellipse cx="180" cy="99" rx="17" ry="5.5" fill="#FFF" stroke="#7B1E26" stroke-width="2"/>
+          <path d="M116 130L108 172M144 130L152 172" stroke="#581218" stroke-width="10" stroke-linecap="round"/>
+        `
+      }
+    };
+
+    function showEksplorasi(key) {
+      const item = eksplorasiData[key];
+      if (!item) return;
+
+      ['panen', 'burung', 'angin', 'bawa'].forEach(k => {
+        const card = document.getElementById('eks-' + k);
+        if (k === key) {
+          card.classList.add('bg-emas-soft', 'border-marun', 'shadow-md');
+          card.classList.remove('bg-krem', 'border-emas/60');
+        } else {
+          card.classList.remove('bg-emas-soft', 'border-marun', 'shadow-md');
+          card.classList.add('bg-krem', 'border-emas/60');
+        }
+      });
+
+      document.getElementById('eksplorasiTitle').textContent = item.title;
+      document.getElementById('eksplorasiDesc').textContent = item.desc;
+      document.getElementById('eksplorasiCaption').textContent = item.caption;
+      document.getElementById('eksTangan').textContent = item.tangan;
+      document.getElementById('eksKaki').textContent = item.kaki;
+      document.getElementById('eksBadan').textContent = item.badan;
+      document.getElementById('eksplorasiSvg').innerHTML = item.svg;
+    }
+
+    // =========================================================================
+    // 5. SIMULATOR RANGKAIAN GERAK & DESAIN KELOMPOK (MATERI 4)
+    // =========================================================================
+    const rangkaianStages = {
+      1: {
+        coords: [[75, 85], [145, 85], [215, 85], [285, 85]],
+        title: 'Tahap 1: Gerakan Pembuka — Formasi Garis Lurus',
+        desc: 'Penari A, B, C, dan D berbaris lurus menghadap penonton. Semua anggota memberi salam pembuka secara bersamaan mengikuti 8 hitungan musik.'
+      },
+      2: {
+        coords: [[95, 125], [152, 98], [208, 72], [265, 45]],
+        title: 'Tahap 2: Gerakan Inti — Formasi Diagonal',
+        desc: 'Penari bergeser membentuk garis diagonal untuk menampilkan variasi gerakan utama mengayun piring dan melangkah kompak.'
+      },
+      3: {
+        coords: [[180, 35], [245, 82], [180, 128], [115, 82]],
+        title: 'Tahap 3: Gerakan Penghubung — Formasi Lingkaran',
+        desc: 'Penari melangkah berputar membentuk lingkaran kecil sebagai gerakan penghubung sebelum menuju pose akhir.'
+      },
+      4: {
+        coords: [[80, 105], [145, 55], [215, 55], [280, 105]],
+        title: 'Tahap 4: Gerakan Penutup — Formasi Setengah Lingkaran',
+        desc: 'Penari membuka lingkaran menjadi setengah lingkaran menghadap penonton, lalu melakukan pose penutup mengangkat piring dengan senyum percaya diri.'
+      }
+    };
+
+    function setRangkaianStage(stageNum) {
+      const st = rangkaianStages[stageNum];
+      if (!st) return;
+
+      for (let i = 1; i <= 4; i++) {
+        const btn = document.getElementById('stage-btn-' + i);
+        if (i === stageNum) {
+          btn.classList.add('bg-marun', 'text-emas-bright', 'border-marun');
+          btn.classList.remove('bg-white', 'text-marun', 'border-emas');
+        } else {
+          btn.classList.remove('bg-marun', 'text-emas-bright', 'border-marun');
+          btn.classList.add('bg-white', 'text-marun', 'border-emas');
+        }
+      }
+
+      st.coords.forEach((pt, idx) => {
+        const el = document.getElementById('rk-dancer-' + (idx + 1));
+        if (el) el.setAttribute('transform', `translate(${pt[0]}, ${pt[1]})`);
+      });
+
+      document.getElementById('rangkaianStageTitle').textContent = st.title;
+      document.getElementById('rangkaianStageDesc').textContent = st.desc;
+    }
+
+    // =========================================================================
+    // 6. CHECKLIST LATIHAN INTERAKTIF (MATERI 5)
+    // =========================================================================
+    function updateChecklistCount() {
+      const checkboxes = document.querySelectorAll('.practice-chk');
+      let checked = 0;
+      checkboxes.forEach(cb => { if (cb.checked) checked++; });
+
+      document.getElementById('checklistProgress').textContent = `${checked} / ${checkboxes.length} Siap`;
+      const fb = document.getElementById('checklistFeedback');
+
+      if (checked === checkboxes.length) {
+        fb.innerHTML = '🎉 <strong>Luar Biasa!</strong> Kelompokmu sudah siap menampilkan kreasi Tari Piring dengan percaya diri!';
+        fb.classList.add('bg-emerald-100', 'text-emerald-900');
+      } else if (checked > 0) {
+        fb.innerHTML = `👍 Bagus! Sudah ${checked} dari ${checkboxes.length} aspek latihan terpenuhi. Terus berlatih kompak ya!`;
+        fb.classList.remove('bg-emerald-100', 'text-emerald-900');
+      } else {
+        fb.innerHTML = 'Ayo centang setiap langkah yang sudah kelompokmu latih hari ini! 💪';
+        fb.classList.remove('bg-emerald-100', 'text-emerald-900');
+      }
+    }
+
+    // =========================================================================
+    // 7. PEMUTAR VIDEO YOUTUBE (MENU VIDEO)
+    // =========================================================================
+    function extractYoutubeId(url) {
+      if (!url) return null;
+      const regExp = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/;
+      const match = url.trim().match(regExp);
+      return match ? match[1] : null;
+    }
+
+    function updateYoutubeVideo() {
+      const input = document.getElementById('customYoutubeInput').value;
+      const videoId = extractYoutubeId(input);
+      const status = document.getElementById('videoStatusMsg');
+
+      if (!videoId) {
+        status.textContent = '⚠️ Tautan YouTube tidak dikenali. Pastikan menempel tautan YouTube yang lengkap dan valid.';
+        status.classList.add('text-red-700', 'font-bold');
+        return;
+      }
+
+      document.getElementById('youtubePlayer').src = `https://www.youtube.com/embed/${videoId}?rel=0`;
+      document.getElementById('videoTitleDisplay').textContent = 'Video Pertunjukan Tari Piring (Tautan Guru)';
+      status.textContent = '✅ Video baru berhasil dimuat! Pastikan perangkat terhubung ke internet.';
+      status.classList.remove('text-red-700');
+      status.classList.add('text-emerald-800', 'font-bold');
+    }
+
+    function resetYoutubeVideo() {
+      document.getElementById('customYoutubeInput').value = '';
+      document.getElementById('youtubePlayer').src = 'https://www.youtube.com/embed/HScX3YKzbvY?rel=0';
+      document.getElementById('videoTitleDisplay').textContent = 'Pertunjukan Tari Piring Tradisional Minangkabau';
+      const status = document.getElementById('videoStatusMsg');
+      status.textContent = 'Tautan dikembalikan ke video referensi Tari Piring sesuai RPM.';
+      status.className = 'text-xs text-gray-600 mt-1.5';
+    }
+
+    // =========================================================================
+    // 8. PEMUTAR MUSIK PENGIRING (OFFLINE WEB AUDIO TALEMPONG + TAUTAN GURU)
+    // =========================================================================
+    let audioCtx = null;
+    let isOfflinePlaying = false;
+    let offlineTimer = null;
+    let currentBeat = 0;
+    let offlineBpm = 105;
+    let offlineGainValue = 0.75;
+
+    // Tangga nada pentatonis Minangkabau (simulasi bunyi Talempong & Gandang)
+    const talempongNotes = [523.25, 587.33, 659.25, 783.99, 659.25, 587.33, 783.99, 880.00];
+
+    function playTalempongStep(beatIndex) {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+
+      const now = audioCtx.currentTime;
+
+      // 1. Bunyi Melodi Talempong (logam cerah)
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(talempongNotes[beatIndex], now);
+
+      const vol = offlineGainValue * 0.35;
+      gain.gain.setValueAtTime(0.001, now);
+      gain.gain.exponentialRampToValueAtTime(Math.max(vol, 0.001), now + 0.02);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.42);
+
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start(now);
+      osc.stop(now + 0.45);
+
+      // 2. Bunyi Ketukan Gandang pada hitungan 1, 3, 5, 7
+      if (beatIndex % 2 === 0) {
+        const drumOsc = audioCtx.createOscillator();
+        const drumGain = audioCtx.createGain();
+        drumOsc.type = 'sine';
+        drumOsc.frequency.setValueAtTime(beatIndex === 0 ? 150 : 120, now);
+        drumOsc.frequency.exponentialRampToValueAtTime(55, now + 0.18);
+
+        const dVol = offlineGainValue * 0.5;
+        drumGain.gain.setValueAtTime(Math.max(dVol, 0.001), now);
+        drumGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.22);
+
+        drumOsc.connect(drumGain);
+        drumGain.connect(audioCtx.destination);
+        drumOsc.start(now);
+        drumOsc.stop(now + 0.24);
+      }
+
+      // Update Visual Kotak Ketukan 1-8
+      const boxes = document.querySelectorAll('.beat-box');
+      boxes.forEach((box, idx) => {
+        if (idx === beatIndex) {
+          box.classList.add('bg-emas-bright', 'text-marun-dark', 'scale-110', 'shadow-lg');
+          box.classList.remove('bg-white/15');
+        } else {
+          box.classList.remove('bg-emas-bright', 'text-marun-dark', 'scale-110', 'shadow-lg');
+          box.classList.add('bg-white/15');
+        }
+      });
+    }
+
+    function toggleOfflineMusic() {
+      const btnText = document.getElementById('offlineMusicText');
+      const btnIcon = document.getElementById('offlineMusicIcon');
+
+      if (isOfflinePlaying) {
+        clearInterval(offlineTimer);
+        isOfflinePlaying = false;
+        btnText.textContent = 'Putar Musik Irama';
+        btnIcon.textContent = '▶️';
+        document.querySelectorAll('.beat-box').forEach(box => {
+          box.classList.remove('bg-emas-bright', 'text-marun-dark', 'scale-110', 'shadow-lg');
+          box.classList.add('bg-white/15');
+        });
+      } else {
+        isOfflinePlaying = true;
+        currentBeat = 0;
+        btnText.textContent = 'Jeda Musik Irama';
+        btnIcon.textContent = '⏸️';
+        startOfflineLoop();
+      }
+    }
+
+    function startOfflineLoop() {
+      clearInterval(offlineTimer);
+      const intervalMs = Math.round(60000 / offlineBpm);
+      playTalempongStep(currentBeat);
+      currentBeat = (currentBeat + 1) % 8;
+
+      offlineTimer = setInterval(() => {
+        if (!isOfflinePlaying) return;
+        playTalempongStep(currentBeat);
+        currentBeat = (currentBeat + 1) % 8;
+      }, intervalMs);
+    }
+
+    function setOfflineTempo(bpm, label) {
+      offlineBpm = bpm;
+      document.getElementById('tempoLabel').textContent = 'Tempo: ' + label;
+
+      [85, 105, 125].forEach(val => {
+        const b = document.getElementById('tempo-' + val);
+        if (val === bpm) {
+          b.classList.add('bg-emas-bright', 'text-marun-dark', 'border-emas-bright');
+          b.classList.remove('bg-white/15', 'border-white/20');
+        } else {
+          b.classList.remove('bg-emas-bright', 'text-marun-dark', 'border-emas-bright');
+          b.classList.add('bg-white/15', 'border-white/20');
+        }
+      });
+
+      if (isOfflinePlaying) {
+        startOfflineLoop();
+      }
+    }
+
+    function updateOfflineVolume(val) {
+      offlineGainValue = val / 100;
+      document.getElementById('volumePercent').textContent = val + '%';
+    }
+
+    // Musik Eksternal (YouTube RPM / URL MP3 Guru)
+    function updateCustomMusic() {
+      const url = document.getElementById('customMusicInput').value.trim();
+      const status = document.getElementById('musicStatusText');
+      if (!url) {
+        status.textContent = '⚠️ Silakan masukkan tautan YouTube atau URL file audio (.mp3) terlebih dahulu.';
+        return;
+      }
+
+      const ytId = extractYoutubeId(url);
+      const ytWrap = document.getElementById('externalMusicContainer');
+      const audioWrap = document.getElementById('directAudioWrapper');
+      const audioEl = document.getElementById('directAudioPlayer');
+
+      if (ytId) {
+        audioEl.pause();
+        audioWrap.classList.add('hidden');
+        ytWrap.classList.remove('hidden');
+        document.getElementById('musicYoutubeIframe').src = `https://www.youtube.com/embed/${ytId}?rel=0`;
+        status.textContent = '✅ Tautan musik YouTube berhasil dimuat.';
+      } else if (url.startsWith('http://') || url.startsWith('https://')) {
+        ytWrap.classList.add('hidden');
+        audioWrap.classList.remove('hidden');
+        audioEl.src = url;
+        status.textContent = '✅ Tautan audio langsung dimuat. Klik tombol Play pada pemutar di atas.';
+      } else {
+        status.textContent = '⚠️ Format tautan tidak valid. Gunakan URL YouTube atau file audio yang dimulai dengan https://';
+      }
+    }
+
+    function resetCustomMusic() {
+      document.getElementById('customMusicInput').value = '';
+      document.getElementById('directAudioPlayer').pause();
+      document.getElementById('directAudioWrapper').classList.add('hidden');
+      document.getElementById('externalMusicContainer').classList.remove('hidden');
+      document.getElementById('musicYoutubeIframe').src = 'https://www.youtube.com/embed/QjLWQe9HC8M?rel=0';
+      document.getElementById('musicStatusText').textContent = 'Memuat tautan musik instrumental Minangkabau sesuai RPM.';
+    }
+
+    // =========================================================================
+    // 9. KUIS INTERAKTIF (10 SOAL PILIHAN GANDA + SKOR OTOMATIS)
+    // =========================================================================
+    const quizQuestions = [
+      {
+        q: '1. Dari daerah manakah kesenian tradisional Tari Piring berasal?',
+        options: [
+          'Minangkabau, Sumatera Barat',
+          'Aceh Darussalam',
+          'Palembang, Sumatera Selatan',
+          'Pontianak, Kalimantan Barat'
+        ],
+        answer: 0,
+        explanation: 'Tari Piring (Tari Piriang) merupakan tarian tradisional kebanggaan masyarakat Minangkabau, Provinsi Sumatera Barat.'
+      },
+      {
+        q: '2. Pada awalnya, Tari Piring dipertunjukkan oleh masyarakat Minangkabau sebagai wujud...',
+        options: [
+          'Perlombaan olahraga tradisional',
+          'Ungkapan rasa syukur atas hasil panen yang melimpah',
+          'Upacara pemberangkatan kapal layar',
+          'Permainan ketangkasan anak-anak di pasar'
+        ],
+        answer: 1,
+        explanation: 'Pada mulanya Tari Piring dilakukan sebagai ungkapan rasa syukur masyarakat Minangkabau kepada Tuhan atas hasil panen padi yang melimpah.'
+      },
+      {
+        q: '3. Manakah yang merupakan ciri khas utama gerakan dalam pertunjukan Tari Piring?',
+        options: [
+          'Penari duduk diam tanpa menggerakkan tangan',
+          'Gerakan tangan sangat lambat dan piring diletakkan di lantai',
+          'Gerakan tangan lincah mengayun dan memutar piring tanpa terjatuh',
+          'Penari hanya melompat-lompat tanpa memegang benda apa pun'
+        ],
+        answer: 2,
+        explanation: 'Ciri khas Tari Piring adalah kelincahan ayunan tangan penari yang memutar piring dengan seimbang sehingga piring tidak terjatuh.'
+      },
+      {
+        q: '4. Alat musik tradisional Minangkabau yang sering digunakan untuk mengiringi Tari Piring adalah...',
+        options: [
+          'Angklung dan Kecapi',
+          'Talempong, Saluang, dan Gandang',
+          'Gamelan Jawa dan Siter',
+          'Sasando dan Tifa'
+        ],
+        answer: 1,
+        explanation: 'Talempong, saluang, dan gandang adalah alat musik tradisional Minangkabau yang membangun irama bersemangat pada Tari Piring.'
+      },
+      {
+        q: '5. Untuk menjaga keselamatan saat berlatih kreasi Tari Piring di kelas, properti yang sebaiknya digunakan adalah...',
+        options: [
+          'Piring kaca yang mudah pecah',
+          'Piring keramik berat milik dapur sekolah',
+          'Piring plastik atau piring tiruan dari karton',
+          'Mangkuk berisi air penuh'
+        ],
+        answer: 2,
+        explanation: 'Demi keselamatan murid di kelas, gunakan piring plastik atau piring tiruan dari karton agar ringan dan tidak pecah.'
+      },
+      {
+        q: '6. Apa fungsi utama kostum adat Minangkabau (seperti baju kurung dan songket) dalam pertunjukan Tari Piring?',
+        options: [
+          'Membuat penari sulit bergerak cepat',
+          'Memperkuat karakter budaya daerah dan keindahan penampilan',
+          'Menggantikan peran musik pengiring',
+          'Menutupi wajah penari agar tidak terlihat'
+        ],
+        answer: 1,
+        explanation: 'Kostum tari berfungsi memperkuat karakter budaya Minangkabau sekaligus menambah keindahan visual saat pertunjukan.'
+      },
+      {
+        q: '7. Garis imajiner di lantai yang dibentuk oleh posisi para penari saat menari berkelompok disebut...',
+        options: [
+          'Pola lantai',
+          'Irama musik',
+          'Properti tari',
+          'Tata rias'
+        ],
+        answer: 0,
+        explanation: 'Pola lantai adalah pengaturan posisi atau garis perpindahan penari di atas area pertunjukan, seperti garis lurus, diagonal, atau lingkaran.'
+      },
+      {
+        q: '8. Kegiatan mencoba dan mencari berbagai variasi gerakan tubuh berdasarkan lingkungan sekitar atau aktivitas sehari-hari disebut...',
+        options: [
+          'Evaluasi gerak',
+          'Eksplorasi gerak',
+          'Penilaian sumatif',
+          'Pengaturan kostum'
+        ],
+        answer: 1,
+        explanation: 'Eksplorasi gerak adalah proses mencoba dan menemukan berbagai ide gerakan baru dari tubuh, alam, maupun kegiatan sehari-hari.'
+      },
+      {
+        q: '9. Urutan penyusunan rangkaian kreasi gerak tari yang runtut dari awal sampai akhir adalah...',
+        options: [
+          'Gerakan penutup → gerakan inti → gerakan pembuka → gerakan penghubung',
+          'Gerakan penghubung → gerakan penutup → gerakan pembuka → gerakan inti',
+          'Gerakan pembuka → gerakan inti → gerakan penghubung → gerakan penutup',
+          'Gerakan inti → gerakan penutup → gerakan penghubung → gerakan pembuka'
+        ],
+        answer: 2,
+        explanation: 'Rangkaian tari disusun secara runtut mulai dari gerakan pembuka, gerakan inti, gerakan penghubung, hingga gerakan penutup.'
+      },
+      {
+        q: '10. Bagaimana sikap yang baik ketika menyaksikan kelompok lain menampilkan hasil kreasi tarinya di depan kelas?',
+        options: [
+          'Berbicara keras dan tidak memperhatikan',
+          'Mengejek jika ada teman yang lupa gerakan',
+          'Memperhatikan dengan tertib dan memberikan tepuk tangan apresiasi',
+          'Berjalan-jalan di depan kelompok yang sedang tampil'
+        ],
+        answer: 2,
+        explanation: 'Penonton yang baik selalu memperhatikan dengan tertib, menghargai usaha teman, dan memberikan apresiasi yang santun.'
+      }
+    ];
+
+    let quizIndex = 0;
+    let quizScoreCount = 0;
+    let quizAnswered = false;
+
+    function renderQuizQuestion() {
+      const qObj = quizQuestions[quizIndex];
+      quizAnswered = false;
+
+      document.getElementById('quizProgressBadge').textContent = `Soal ${quizIndex + 1} / ${quizQuestions.length}`;
+      document.getElementById('quizProgressBar').style.width = `${((quizIndex + 1) / quizQuestions.length) * 100}%`;
+      document.getElementById('quizQuestionText').textContent = qObj.q;
+
+      const optContainer = document.getElementById('quizOptionsContainer');
+      optContainer.innerHTML = '';
+      const letters = ['A', 'B', 'C', 'D'];
+
+      qObj.options.forEach((optText, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'quiz-opt-btn w-full text-left p-4 rounded-2xl border-2 border-emas/60 bg-white hover:bg-emas-soft font-semibold text-gray-800 flex items-center gap-3.5 transition cursor-pointer';
+        btn.innerHTML = `
+          <span class="w-9 h-9 rounded-xl bg-marun text-emas-bright font-judul font-bold flex items-center justify-center shrink-0">${letters[idx]}</span>
+          <span class="text-sm sm:text-base">${optText}</span>
+        `;
+        btn.onclick = () => selectQuizAnswer(idx);
+        optContainer.appendChild(btn);
+      });
+
+      document.getElementById('quizFeedbackBox').classList.add('hidden');
+      document.getElementById('quizNextBtn').classList.add('hidden');
+    }
+
+    function selectQuizAnswer(selectedIdx) {
+      if (quizAnswered) return;
+      quizAnswered = true;
+
+      const qObj = quizQuestions[quizIndex];
+      const isCorrect = selectedIdx === qObj.answer;
+      if (isCorrect) quizScoreCount++;
+
+      const buttons = document.querySelectorAll('.quiz-opt-btn');
+      buttons.forEach((btn, idx) => {
+        btn.disabled = true;
+        btn.classList.remove('hover:bg-emas-soft', 'cursor-pointer');
+        if (idx === qObj.answer) {
+          btn.classList.remove('border-emas/60', 'bg-white');
+          btn.classList.add('border-emerald-600', 'bg-emerald-50', 'text-emerald-950');
+        } else if (idx === selectedIdx && !isCorrect) {
+          btn.classList.remove('border-emas/60', 'bg-white');
+          btn.classList.add('border-red-500', 'bg-red-50', 'text-red-950');
+        } else {
+          btn.classList.add('opacity-60');
+        }
+      });
+
+      const fbBox = document.getElementById('quizFeedbackBox');
+      const fbTitle = document.getElementById('quizFeedbackTitle');
+      const fbExp = document.getElementById('quizFeedbackExplanation');
+
+      fbBox.classList.remove('hidden', 'bg-emerald-50', 'border-emerald-500', 'text-emerald-900', 'bg-amber-50', 'border-amber-500', 'text-amber-950');
+
+      if (isCorrect) {
+        fbBox.classList.add('bg-emerald-50', 'border-emerald-500', 'text-emerald-900');
+        fbTitle.textContent = '🎉 Jawaban Kamu Benar!';
+      } else {
+        fbBox.classList.add('bg-amber-50', 'border-amber-500', 'text-amber-950');
+        fbTitle.textContent = '💡 Belum Tepat, Yuk Pelajari Penjelasannya!';
+      }
+      fbExp.textContent = qObj.explanation;
+
+      const nextBtn = document.getElementById('quizNextBtn');
+      const nextBtnText = document.getElementById('quizNextBtnText');
+      nextBtnText.textContent = quizIndex === quizQuestions.length - 1 ? 'Lihat Skor Akhir' : 'Soal Berikutnya';
+      nextBtn.classList.remove('hidden');
+    }
+
+    function nextQuizQuestion() {
+      if (quizIndex < quizQuestions.length - 1) {
+        quizIndex++;
+        renderQuizQuestion();
+      } else {
+        showQuizResults();
+      }
+    }
+
+    function showQuizResults() {
+      document.getElementById('quizQuestionArea').classList.add('hidden');
+      document.getElementById('quizResultArea').classList.remove('hidden');
+
+      const finalScore = Math.round((quizScoreCount / quizQuestions.length) * 100);
+      document.getElementById('quizFinalScore').textContent = finalScore;
+      document.getElementById('quizCorrectSummary').textContent = `Kamu menjawab benar ${quizScoreCount} dari ${quizQuestions.length} soal`;
+
+      const starsEl = document.getElementById('quizStarsDisplay');
+      const msgEl = document.getElementById('quizFinalMessage');
+
+      if (finalScore >= 80) {
+        starsEl.textContent = '⭐⭐⭐';
+        msgEl.textContent = 'Luar biasa! Pemahamanmu tentang Tari Piring Minangkabau dan kreasi gerak tari sangat hebat!';
+      } else if (finalScore >= 60) {
+        starsEl.textContent = '⭐⭐';
+        msgEl.textContent = 'Bagus! Kamu sudah memahami sebagian besar materi. Yuk baca kembali bagian yang masih keliru agar makin mahir!';
+      } else {
+        starsEl.textContent = '⭐';
+        msgEl.textContent = 'Tetap semangat belajar ya! Kamu bisa membaca kembali Menu Materi lalu mencoba mengulang kuis ini.';
+      }
+    }
+
+    function restartQuiz() {
+      quizIndex = 0;
+      quizScoreCount = 0;
+      document.getElementById('quizResultArea').classList.add('hidden');
+      document.getElementById('quizQuestionArea').classList.remove('hidden');
+      renderQuizQuestion();
+    }
+
+    // =========================================================================
+    // 10. REFLEKSI INTERAKTIF
+    // =========================================================================
+    function selectReflectionMood(mood) {
+      ['senang', 'cukup', 'sulit'].forEach(m => {
+        const btn = document.getElementById('mood-' + m);
+        if (m === mood) {
+          btn.classList.add('bg-emas-soft', 'border-marun', 'shadow-md');
+          btn.classList.remove('bg-white', 'border-emas/50');
+        } else {
+          btn.classList.remove('bg-emas-soft', 'border-marun', 'shadow-md');
+          btn.classList.add('bg-white', 'border-emas/50');
+        }
+      });
+
+      const respBox = document.getElementById('moodResponseBox');
+      respBox.classList.remove('hidden');
+
+      if (mood === 'senang') {
+        respBox.textContent = '😊 Wah, senang sekali mendengarnya! Terus pertahankan semangat berkreasi dan bekerja sama dengan kelompokmu ya!';
+      } else if (mood === 'cukup') {
+        respBox.textContent = '😐 Terima kasih sudah jujur! Jika ada bagian materi atau gerakan yang belum dipahami, jangan ragu bertanya kepada guru atau teman kelompokmu.';
+      } else {
+        respBox.textContent = '😟 Tidak apa-apa, belajar hal baru memang butuh proses. Yuk sampaikan kesulitanmu kepada guru agar dibantu berlatih secara bertahap!';
+      }
+    }
+
+    function clearReflectionNotes() {
+      document.querySelectorAll('.refleksi-input').forEach(el => {
+        el.value = '';
+      });
+      document.getElementById('reflectionReadyBanner').classList.add('hidden');
+    }
+
+    function showReflectionReadyBanner() {
+      document.getElementById('reflectionReadyBanner').classList.remove('hidden');
+    }
+
+    // =========================================================================
+    // INISIALISASI SAAT HALAMAN DIMUAT
+    // =========================================================================
+    window.addEventListener('DOMContentLoaded', () => {
+      navigateTo('beranda');
+      setMateriBab(0);
+      selectPolaLantai('lurus');
+      showEksplorasi('panen');
+      setRangkaianStage(1);
+      renderQuizQuestion();
+    });
+  </script>
+</body>
+</html>
